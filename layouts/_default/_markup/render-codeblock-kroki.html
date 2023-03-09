@@ -1,11 +1,7 @@
-{{- /* Credits go to Joe Mooring who authored this shortcode:
+{{- /* Credits go to Joe Mooring who authored this markdown render hook:
        https://github.com/jmooring/hugo-testing/blob/hugo-forum-topic-36924/layouts/_default/_markup/render-codeblock-kroki.html
-*/}}
 
-{{ .Page.Store.Set "haskroki" true -}}
-
-{{- /*
-  Renders diagrams from textual descriptions to SVG images using the Kroki service.
+       Renders diagrams from textual descriptions to SVG images using the Kroki service.
   
   References:
   

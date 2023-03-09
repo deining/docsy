@@ -5,6 +5,8 @@ draft: false
 ---
 ## Diagrams from Kroki
 
+## Inline Diagrams
+
 [Kroki](https://kroki.io) is a web service for rendering ....
 
 For example, the following defines a simple AsciiArt diagram:
@@ -185,3 +187,7 @@ params:
 }
 {{< /tab >}}
 {{< /tabpane >}}
+
+## Read content from file
+
+{{< kroki type="actdiag" file="diagram.txt" >}}
