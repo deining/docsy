@@ -374,6 +374,8 @@ params:
 
 [Kroki](https://kroki.io) is a web service for rendering ....
 
+### ASCI Art
+
 For example, the following defines a simple AsciiArt diagram:
 
 ````
@@ -400,6 +402,17 @@ For example, the following defines a simple AsciiArt diagram:
  /   /
  \   \
  /   /
+```
+
+```svgbob
+|\   ___ \|\   __  \|\   ____\|\   ____\     |\  \  /  /|    |\  \|\   ____\         |\   ____\|\   __  \|\   __  \|\  \     |\  \      
+\ \  \_|\ \ \  \|\  \ \  \___|\ \  \___|_    \ \  \/  / /    \ \  \ \  \___|_        \ \  \___|\ \  \|\  \ \  \|\  \ \  \    \ \  \     
+ \ \  \ \\ \ \  \\\  \ \  \    \ \_____  \    \ \    / /      \ \  \ \_____  \        \ \  \    \ \  \\\  \ \  \\\  \ \  \    \ \  \    
+  \ \  \_\\ \ \  \\\  \ \  \____\|____|\  \    \/  /  /        \ \  \|____|\  \        \ \  \____\ \  \\\  \ \  \\\  \ \  \____\ \__\   
+   \ \_______\ \_______\ \_______\____\_\  \ __/  / /           \ \__\____\_\  \        \ \_______\ \_______\ \_______\ \_______\|__|   
+    \|_______|\|_______|\|_______|\_________\\___/ /             \|__|\_________\        \|_______|\|_______|\|_______|\|_______|   ___ 
+                                 \|_________\|___|/                  \|_________|                                                  |\__\
+                                                                                                                                   \|__|
 ```
 
 <br/>
@@ -553,21 +566,112 @@ params:
 {{< /tab >}}
 {{< /tabpane >}}
 
-## Read content from file
+## Activity diagrams
 
-{{< kroki type="actdiag" file="diagram.txt" />}}
+Documentation: [actdiag][]
 
-## Blockdiag
+````
+```actdiag
+{
+  write -> convert -> image
 
-```blockdiag
-blockdiag {
-  Kroki -> generates -> "Block diagrams";
-  Kroki -> is -> "very easy!";
+  lane Sysadmin {
+    write [label = "Setup docsy"];
 
-  Kroki [color = "greenyellow"];
-  "Block diagrams" [color = "pink"];
-  "very easy!" [color = "orange"];
+  }
+  lane Writer {
+    label = "Technical writer"
+    convert [label = "Author content"];
+  }
+  lane Boss {
+    image [label = "Approve gratification"];
+  }
+}
+````
+
+```actdiag
+{
+  write -> convert -> image
+
+  lane Sysadmin {
+    write [label = "Setup docsy"];
+
+  }
+  lane Writer {
+    label = "Technical writer"
+    convert [label = "Author content"];
+  }
+  lane Boss {
+    image [label = "Approve gratification"];
+  }
 }
 ```
 
-Hallo!
+[actdiag]: http://blockdiag.com/en/actdiag/
+
+## Block diagrams
+
+Documentation: [blockdiag][]
+
+````
+```blockdiag
+{
+  Docsy -> supports -> "block diagrams";
+  Docsy -> is -> "awesome!";
+
+  Docsy [color = "greenyellow"];
+  "block diagrams" [color = "pink"];
+  "awesome!" [color = "orange"];
+}
+```
+````
+
+```blockdiag
+{
+  Docsy -> supports -> "block diagrams";
+  Docsy -> is -> "awesome!";
+
+  Docsy [color = "greenyellow"];
+  "block diagrams" [color = "pink"];
+  "awesome!" [color = "orange"];
+}
+```
+
+[blockdiag]: http://blockdiag.com/en/blockdiag/
+
+## Sequence diagrams
+
+Documentation: [seqdiag][]
+
+````
+```seqdiag
+{
+  "Docsy user"  -> "Discussion board" [label = "ask question"];
+  "Discussion board" -> "Community member" [label = "read question"];
+  "Community member"  -> "Docsy instance" [label = "investigate issue raised"];
+  "Community member"  <-- "Docsy instance" [label = "come up with solution"];
+  "Discussion board"  <-- "Community member" [label = "propose solution"];
+  "Docsy user"  <-- "Discussion board" [label = "check proposed solution"];
+  "Docsy user"  -> "Discussion board" [label = "mark question as resolved"];
+  "Docsy user"  -> "Docsy user" [label = "Being happy"];
+}
+````
+
+```seqdiag
+{
+  "Docsy user"  -> "Discussion board" [label = "ask question"];
+  "Discussion board" -> "Community member" [label = "read question"];
+  "Community member"  -> "Docsy test instance" [label = "investigate issue raised"];
+  "Community member"  <-- "Docsy test instance" [label = "come up with solution"];
+  "Discussion board"  <-- "Community member" [label = "propose solution"];
+  "Docsy user"  <-- "Discussion board" [label = "check proposed solution"];
+  "Docsy user"  -> "Discussion board" [label = "mark question as resolved"];
+  "Docsy user"  -> "Docsy user" [label = "Being happy"];
+}
+```
+
+[seqdiag]: http://blockdiag.com/en/seqdiag/
+
+## Read content from file
+
+{{< kroki type="actdiag" file="diagram.txt" />}}
