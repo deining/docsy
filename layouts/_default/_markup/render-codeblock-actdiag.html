@@ -1,1 +1,18 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "actdiag") -}}
+{{ .Attributes  }}
+
+{{ $supportedFormats := slice "svg" "png" -}}
+{{ $validAttributes := slice "antialias" "no-transparency" "no-doctype" "size" -}}
+
+{{ $options := dict  }}
+{{ with partial "diagrams/blockdiag.html" .Attributes }}
+{{ $options = merge $options .  }}
+
+{{ end }}
+
+{{ partial "diagrams/kroki-render-hook.html" ( dict "context" .
+                                                    "type" "actdiag"
+                                                    "options" $options
+                                                    "supportedFormats" $supportedFormats
+                                                    "validAttributes" $validAttributes
+                                             ) 
+-}}

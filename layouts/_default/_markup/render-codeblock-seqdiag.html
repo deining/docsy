@@ -1,1 +1,10 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "seqdiag") -}}
+{{ $supportedFormats := slice "svg" "png" -}}
+{{ $validAttributes := slice "antialias" "no-transparency" "no-doctype" "size" -}}
+
+{{ partial "diagrams/kroki-render-hook.html" ( dict "context" .
+                                                    "type" "seqdiag"
+                                                    "options" ( partial "diagrams/blockdiag.html" . )
+                                                    "supportedFormats" $supportedFormats
+                                                    "validAttributes" $validAttributes
+                                             ) 
+-}}

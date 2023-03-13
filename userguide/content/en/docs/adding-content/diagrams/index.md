@@ -392,7 +392,7 @@ For example, the following defines a simple AsciiArt diagram:
 ```
 ````
 
-```kroki {type=svgbob format=png disable=true}
+```kroki {type=svgbob format=svg disabled=true}
   _____
  /  O__]
 /  ___]
@@ -404,7 +404,7 @@ For example, the following defines a simple AsciiArt diagram:
  /   /
 ```
 
-```svgbob
+```svgbob { disabled=true }
 |\   ___ \|\   __  \|\   ____\|\   ____\     |\  \  /  /|    |\  \|\   ____\         |\   ____\|\   __  \|\   __  \|\  \     |\  \      
 \ \  \_|\ \ \  \|\  \ \  \___|\ \  \___|_    \ \  \/  / /    \ \  \ \  \___|_        \ \  \___|\ \  \|\  \ \  \|\  \ \  \    \ \  \     
  \ \  \ \\ \ \  \\\  \ \  \    \ \_____  \    \ \    / /      \ \  \ \_____  \        \ \  \    \ \  \\\  \ \  \\\  \ \  \    \ \  \    
@@ -417,7 +417,7 @@ For example, the following defines a simple AsciiArt diagram:
 
 <br/>
 
-```kroki {type=GraphViz disable=true}
+```kroki {type=GraphViz disabled=true}
 digraph D {
   subgraph cluster_p {
     label = "Kroki";
@@ -444,7 +444,7 @@ digraph D {
 ```
 
 
-```kroki {type=Vega format=svg disable=false}
+```kroki {type=Vega format=svg disabled=true}
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 400,
@@ -589,7 +589,7 @@ Documentation: [actdiag][]
 }
 ````
 
-```actdiag
+```actdiag {disabled="false" antialias="true" no-transparency=true no-doctype=false format=png size="200x200"}
 {
   write -> convert -> image
 
@@ -626,7 +626,7 @@ Documentation: [blockdiag][]
 ```
 ````
 
-```blockdiag
+```blockdiag { disabled=false }
 {
   Docsy -> supports -> "block diagrams";
   Docsy -> is -> "awesome!";
@@ -657,9 +657,9 @@ Documentation: [seqdiag][]
 }
 ````
 
-```seqdiag
+```seqdiag { disabled=false options=\{ "key 1": "value", "key 2": "value" \}}
 {
-  "Docsy user"  -> "Discussion board" [label = "ask question"];
+  "Docsy user" -> "Discussion board" [label = "ask question"];
   "Discussion board" -> "Community member" [label = "read question"];
   "Community member"  -> "Docsy test instance" [label = "investigate issue raised"];
   "Community member"  <-- "Docsy test instance" [label = "come up with solution"];
@@ -674,4 +674,4 @@ Documentation: [seqdiag][]
 
 ## Read content from file
 
-{{< kroki type="actdiag" file="diagram.txt" />}}
+{{/*< kroki type="actdiag" file="diagram.txt"  />*/}}

@@ -16,14 +16,6 @@ References:
 @param {string} .Type The first word of the info string.
 */}}
 
-{{- $supportedTypes := slice
-  "actdiag" "blockdiag" "bpmn" "bytefield" "c4plantuml" "d2" "dbml" "ditaa" "erd" "excalidraw" "graphviz" "mermaid"
-  "nomnoml" "nwdiag" "packetdiag" "pikchr" "plantuml" "rackdiag" "seqdiag" "strucrurizr"
-  "svgbob" "umlet" "vega" "vegalite" "wavedrom"
-}}
-{{- $typesDelimited := delimit $supportedTypes ", " ", and " }}
-{{- $supportedFormats := slice "svg" "png" "jpeg" }}
-{{- $formatsDelimited := delimit $supportedFormats ", " ", and " }}
 {{- /* Initialize variables. */}}
 
 {{- $attrs := .context.Attributes }}
@@ -37,7 +29,41 @@ References:
 {{- with $attrs.format }}
   {{- $outputFormat = . }}
 {{- end }}
-{{- $diagramOptions := "{}" }}
+
+{{- $diagramOptions := dict }}
+{{ range $key, $value := .options -}}
+  {{ $diagramOptions = merge $diagramOptions ( dict $key $value ) -}}
+{{ end -}}
+
+{{- $supportedAttributes := slice "disabled" "format" "type" }}
+{{- range .validAttributes }}
+  {{- $supportedAttributes = $supportedAttributes | append . }}
+{{- end }}
+
+{{- $attributesDelimited := delimit $supportedAttributes ", " " and " }}
+
+{{ range $key, $value := .context.Attributes -}}
+  {{- if not ( in $supportedAttributes $key ) -}}
+    {{ errorf "Code block %q: invalid attribute %q passed. Valid attributes are %s. See %s" $.type $key $attributesDelimited $position -}}
+  {{ end -}}
+{{ end -}}
+
+{{- $supportedTypes := slice
+  "actdiag" "blockdiag" "bpmn" "bytefield" "c4plantuml" "d2" "dbml" "ditaa" "erd" "excalidraw" "graphviz" "mermaid"
+  "nomnoml" "nwdiag" "packetdiag" "pikchr" "plantuml" "rackdiag" "seqdiag" "strucrurizr"
+  "svgbob" "umlet" "vega" "vegalite" "wavedrom"
+}}
+
+{{- $supportedFormats := slice }}
+{{- $typesDelimited := delimit $supportedTypes ", " " and " }}
+{{- with .supportedFormats }}
+  {{- $supportedFormats = . }}
+{{ else -}}
+  {{- $supportedFormats = slice "svg" "png" "jpeg" }}
+{{ end -}}
+
+{{- $formatsDelimited := delimit $supportedFormats ", " " and " }}
+
 {{/* Add attributes. */}}
 {{- $id := printf "kroki-%d" ( add 1 .context.Ordinal) }}
 {{- $class := "" }}
@@ -55,10 +81,10 @@ References:
     {{- errorf "The Kroki code block render hook was called with an invalid type %q. Valid types are %s. See %s" $diagramType $typesDelimited $position }}
   {{- else }}
     {{- if not (in $supportedFormats $outputFormat) }}
-      {{- errorf "The Kroki code block render hook was called with an invalid output format %q. Valid types are %s. See %s" $outputFormat $formatsDelimited $position }}
+      {{- errorf "Code block %q was called with invalid output format %q. Valid types are %s. See %s" ( $.type | lower ) $outputFormat $formatsDelimited $position }}
     {{ else }}
       {{- if or $attrs.disable $.context.Page.Site.Params.kroki.disable }}
-        {{- warnf "Disabled Kroki code block at %s." $position }}
+        {{- warnf "Disabled code block %q at %s." ( $.type | lower ) $position }}
       {{- else }}
         {{- with $inner }}
           {{- $kroki := dict
