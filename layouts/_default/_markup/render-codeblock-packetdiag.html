@@ -1,9 +1,38 @@
 {{ $supportedFormats := slice "svg" "png" -}}
 {{ $validAttributes := slice "antialias" "no-transparency" "no-doctype" "size" -}}
 
+{{ $options := dict -}}
+{{ with .Attributes.antialias }}
+  {{ if ne ( printf "%T" . ) "bool" -}}
+    {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "antialias" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "antialias" . ) -}}
+{{ end -}}
+
+{{ with index .Attributes "no-transparency" }}
+  {{ if ne ( printf "%T" . ) "bool" -}}
+    {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "no-transparency" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "no-transparency" . ) -}}
+{{ end -}}
+
+{{ with .Attributes.size }}
+  {{ if ne ( printf "%T" . ) "string" -}}
+    {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "size" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "size" . ) -}}
+{{ end -}}
+
+{{ with index .Attributes "no-doctype" }}
+  {{ if ne ( printf "%T" . ) "bool" -}}
+    {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "no-doctype" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "no-doctype" . ) -}}
+{{ end -}}
+
 {{ partial "diagrams/kroki-render-hook.html" ( dict "context" .
                                                     "type" "packetdiag"
-                                                    "options" ( partial "diagrams/blockdiag.html" . )
+                                                    "options" $options
                                                     "supportedFormats" $supportedFormats
                                                     "validAttributes" $validAttributes
                                              ) 

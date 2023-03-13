@@ -589,7 +589,7 @@ Documentation: [actdiag][]
 }
 ````
 
-```actdiag {disabled="false" antialias="true" no-transparency=true no-doctype=false format=png size="200x200"}
+```actdiag {disabled=false antialias=true no-transparency=true no-doctype=false format=png size="30x30"}
 {
   write -> convert -> image
 

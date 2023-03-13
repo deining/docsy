@@ -31,8 +31,10 @@ References:
 {{- end }}
 
 {{- $diagramOptions := dict }}
-{{ range $key, $value := .options -}}
-  {{ $diagramOptions = merge $diagramOptions ( dict $key $value ) -}}
+{{ with .options }}
+  {{ range $key, $value := .options -}}
+    {{ $diagramOptions = merge $diagramOptions ( dict $key $value ) -}}
+  {{ end -}}
 {{ end -}}
 
 {{- $supportedAttributes := slice "disabled" "format" "type" }}
