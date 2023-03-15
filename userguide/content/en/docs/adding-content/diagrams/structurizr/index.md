@@ -47,17 +47,3 @@ weight: 170
     } 
 }
 ```
-
-## JPEG
-
-```structurizr { format="jpeg" }
- workspace {
-    model {
- s = softwareSystem System
- } 
-    views { 
-        systemContext s { 
-        } 
-    } 
-}
-```

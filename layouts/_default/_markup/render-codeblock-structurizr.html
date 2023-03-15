@@ -1,7 +1,17 @@
-{{ $supportedFormats := slice "svg" "png" "txt" "utxt" "base64" "jpeg" -}}
+{{ $supportedFormats := slice "svg" "png" "txt" "utxt" "base64" -}}
+{{ $validAttributes := slice "view-key" -}}
+
+{{ $options := dict -}}
+{{ with index .Attributes "view-key" }}
+  {{ if ne ( printf "%T" . ) "string" -}}
+    {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "view-key" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "no-transparency" . ) -}}
+{{ end -}}
 
 {{ partial "diagrams/kroki-render-hook.html" (dict "context" .
                                                    "type" "structurizr"
+                                                   "options" $options
                                                    "supportedFormats" $supportedFormats
+                                                   "validAttributes" $validAttributes
                                              ) -}}
-
