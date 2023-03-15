@@ -1,1 +1,6 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "graphviz") -}}
+{{ $supportedFormats := slice "svg" "png" "jpeg" "pdf" -}}
+
+{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
+                                                   "type" "graphviz"
+                                                   "supportedFormats" $supportedFormats
+                                             ) -}}

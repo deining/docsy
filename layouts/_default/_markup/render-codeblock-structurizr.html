@@ -1,1 +1,7 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "structurizr") -}}
+{{ $supportedFormats := slice "svg" "png" "txt" "utxt" "base64" "jpeg" -}}
+
+{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
+                                                   "type" "structurizr"
+                                                   "supportedFormats" $supportedFormats
+                                             ) -}}
+

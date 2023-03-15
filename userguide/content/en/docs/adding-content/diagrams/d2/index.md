@@ -2,6 +2,7 @@
 title: "D2"
 date: 2023-03-14T21:39:56+01:00
 draft: false
+weight: 40
 ---
 ```d2
 dogs -> cats -> mice: chase

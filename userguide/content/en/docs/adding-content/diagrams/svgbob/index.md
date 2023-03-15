@@ -1,8 +1,9 @@
 ---
 title: "ASCII Art with SvgBob"
-linkTitle: "ASCII Art"
+linkTitle: "ASCII Art (svgbob)"
 date: 2023-03-14T21:51:26+01:00
 draft: false
+weight: 20
 ---
 ### ASCII Art
 
@@ -33,6 +34,8 @@ For example, the following defines a simple AsciiArt diagram:
  \   \
  /   /
 ```
+
+<br>
 
 ```svgbob { disabled=true }
  ________  ________  ________  ________       ___    ___      ___  ________           ________  ________  ________  ___       ___

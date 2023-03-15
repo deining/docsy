@@ -1,1 +1,6 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "plantuml") -}}
+{{ $supportedFormats := slice "svg" "png" "jpeg" "txt" "utxt" "base64" -}}
+
+{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
+                                                   "type" "plantuml"
+                                                   "supportedFormats" $supportedFormats
+                                             ) -}}

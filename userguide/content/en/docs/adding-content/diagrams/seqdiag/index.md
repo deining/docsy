@@ -1,7 +1,9 @@
 ---
 title: "Sequence diagrams"
+linkTitle: "Sequence diagrams (seqdiag)"
 date: 2023-03-14T21:38:57+01:00
 draft: false
+weight: 160
 ---
 ## Sequence diagrams
 

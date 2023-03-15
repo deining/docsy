@@ -1,1 +1,8 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "nomnoml") -}}
+{{ $supportedFormats := slice "svg" -}}
+
+{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
+                                                   "type" "nomnoml"
+                                                   "supportedFormats" $supportedFormats
+                                                   ) -}}
+
+

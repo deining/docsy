@@ -1,1 +1,7 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "mermaid") -}}
+{{ $supportedFormats := slice "svg" "png" -}}
+
+{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
+                                                   "type" "mermaid"
+                                                   "supportedFormats" $supportedFormats
+                                                   ) -}}
+

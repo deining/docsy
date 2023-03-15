@@ -1,1 +1,6 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "vegalite") -}}
+{{ $supportedFormats := slice "svg" "png" "pdf" -}}
+
+{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
+                                                   "type" "vegalite"
+                                                   "supportedFormats" $supportedFormats
+                                                   ) -}}

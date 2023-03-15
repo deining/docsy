@@ -1,8 +1,9 @@
 ---
 title: "Mermaid diagrams"
-linkTitle: "Mermaid"
+linkTitle: "Mermaid (Kroki)"
 date: 2023-03-14T21:41:11+01:00
 draft: false
+weight: 90
 ---
 
 ```mermaid-kroki {  }

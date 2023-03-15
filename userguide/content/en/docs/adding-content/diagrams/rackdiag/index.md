@@ -1,7 +1,9 @@
 ---
 title: "Rack diagrams"
+linkTitle: "Rack diagrams"
 date: 2023-03-14T21:39:26+01:00
 draft: false
+weight: 150
 ---
 ## Rack diagrams
 

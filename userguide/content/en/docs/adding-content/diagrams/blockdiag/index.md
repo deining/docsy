@@ -2,6 +2,7 @@
 title: "Block diagrams"
 date: 2023-03-14T21:37:56+01:00
 draft: false
+weight: 20
 ---
 ## Block diagrams
 

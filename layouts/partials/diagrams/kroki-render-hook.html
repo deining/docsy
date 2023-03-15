@@ -30,6 +30,14 @@ References:
   {{- $outputFormat = . }}
 {{- end }}
 
+{{ $codeBlock := "kroki" -}}
+{{ with .type -}}
+  {{ $codeBlock = . -}}
+  {{ with $.block -}}
+    {{ $codeBlock = . -}}
+  {{ end -}}
+{{ end -}}
+
 {{- $diagramOptions := dict }}
 {{ with .options }}
   {{ range $key, $value := .options -}}
@@ -52,18 +60,17 @@ References:
 
 {{- $supportedTypes := slice
   "actdiag" "blockdiag" "bpmn" "bytefield" "c4plantuml" "d2" "dbml" "ditaa" "erd" "excalidraw" "graphviz" "mermaid"
-  "nomnoml" "nwdiag" "packetdiag" "pikchr" "plantuml" "rackdiag" "seqdiag" "strucrurizr"
+  "nomnoml" "nwdiag" "packetdiag" "pikchr" "plantuml" "rackdiag" "seqdiag" "structurizr"
   "svgbob" "umlet" "vega" "vegalite" "wavedrom"
 }}
+{{- $typesDelimited := delimit $supportedTypes ", " " and " }}
 
 {{- $supportedFormats := slice }}
-{{- $typesDelimited := delimit $supportedTypes ", " " and " }}
 {{- with .supportedFormats }}
   {{- $supportedFormats = . }}
 {{ else -}}
-  {{- $supportedFormats = slice "svg" "png" "jpeg" }}
+  {{- $supportedFormats = slice "svg" "png" "jpeg" "pdf" }}
 {{ end -}}
-
 {{- $formatsDelimited := delimit $supportedFormats ", " " and " }}
 
 {{/* Add attributes. */}}
@@ -80,10 +87,10 @@ References:
 
 {{- with $diagramType := .type  | lower }}
   {{- if not (in $supportedTypes .) }}
-    {{- errorf "The Kroki code block render hook was called with an invalid type %q. Valid types are %s. See %s" $diagramType $typesDelimited $position }}
+    {{- errorf "Code block %q: invalid type attribute %q. Valid types are %s. See %s" $codeBlock $diagramType $typesDelimited $position }}
   {{- else }}
     {{- if not (in $supportedFormats $outputFormat) }}
-      {{- errorf "Code block %q was called with invalid output format %q. Valid types are %s. See %s" ( $.type | lower ) $outputFormat $formatsDelimited $position }}
+      {{- errorf "Code block %q: invalid output format %q. Valid types are %s. See %s" ( $.type | lower ) $outputFormat $formatsDelimited $position }}
     {{ else }}
       {{- if or $attrs.disable $.context.Page.Site.Params.kroki.disable }}
         {{- warnf "Disabled code block %q at %s." ( $.type | lower ) $position }}
@@ -101,26 +108,39 @@ References:
           }}
           {{- with resources.GetRemote $url $opts }}
             {{- with .Err }}
-              {{- errorf "The Kroki code block render hook was unable to get the remote diagram. See %s" . $position }}
+              {{- errorf "Code block %q: %s. Reason: %s. See %s" $codeBlock . .Data.Body $position }}
             {{- else }}
-              {{- $attrs = merge $attrs (dict "src" .RelPermalink) }}
-              <img
-                {{- range $k, $v := $attrs }}
+              {{ if eq $outputFormat "pdf" -}}
+              {{- $attrs = merge $attrs (dict "href" .RelPermalink) }}
+              <a
+                  {{- range $k, $v := $attrs }}
                   {{- if not (eq $k "type") }}
                     {{- printf " %s=%q" $k $v | safeHTMLAttr }}
                   {{- end }}
                 {{- end -}}
-              >
+                >Diagram</a>
+                {{ else if or (eq $outputFormat "txt") (eq $outputFormat "utxt") -}}
+                  {{ highlight .Content "plain" }}
+                {{ else -}}
+                {{- $attrs = merge $attrs (dict "src" (cond (eq $outputFormat "base64") .Content .RelPermalink )) }}
+                <img
+                  {{- range $k, $v := $attrs }}
+                    {{- if not (eq $k "type") }}
+                      {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+                    {{- end }}
+                  {{- end -}}
+                >
+              {{ end -}}
             {{- end }}
           {{- else }}
-            {{- errorf "The Kroki code block render hook was unable to get the remote diagram. See %s" $position }}
+            {{- errorf "Code block %q: unable to get the remote diagram. $codeBlock See %s" $position }}
           {{- end }}
         {{- else }}
-          {{- errorf "The Kroki code block render hook cannot create a diagram without content. See %s" $position }}
+          {{- warnf "Code block %q: empty body, cannot create diagram . See %s" $codeBlock $position }}
         {{- end }}
       {{- end }}
     {{- end }}
   {{ end }}
 {{- else }}
-  {{- errorf "The Kroki code block render hook requires a type attribute. Valid types are %s. See %s" $typesDelimited $position }}
+  {{- errorf "Code block %q: missing %q attribute. Valid types are %s. See %s" $codeBlock "type" $typesDelimited $position }}
 {{- end }}
