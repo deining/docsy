@@ -4,7 +4,7 @@ date: 2023-03-14T21:39:56+01:00
 draft: false
 weight: 40
 ---
-```d2
+```d2 { theme = 4 }
 dogs -> cats -> mice: chase
 replica 1 <-> replica 2
 a -> b: To err is human, to moo bovine {

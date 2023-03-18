@@ -374,7 +374,7 @@ params:
 
 [Kroki](https://kroki.io) is a web service for rendering ....
 
-```kroki { type="graphviz" disabled=true}
+```kroki { type="graphviz" disabled=true }
 digraph D {
   subgraph cluster_p {
     label = "Kroki";
@@ -426,4 +426,4 @@ params:
 
 ## Read content from file
 
-{{/*< kroki type="actdiag" file="diagram.txt"  />*/}}
+{{< kroki type="actdiag" file="diagram.txt" />}}

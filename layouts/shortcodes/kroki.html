@@ -1,95 +1,13 @@
-{{- /* Credits go to Joe Mooring who authored this shortcode:
-  https://github.com/jmooring/hugo-testing/blob/hugo-forum-topic-36924/layouts/shortcodes/kroki.html
-*/}}
+{{ $params := dict "context" . }}
 
-{{- $supportedTypes := slice
-"actdiag" "blockdiag" "bpmn" "bytefield" "ditaa" "erd" "graphviz" "mermaid"
-"nomnoml" "nwdiag" "packetdiag" "pikchr" "plantuml" "rackdiag" "seqdiag"
-"svgbob" "umlet" "vega" "vegalite" "wavedrom"
-}}
-{{- $typesDelimited := delimit $supportedTypes ", " ", and " }}
-
-{{- $supportedFormats := slice "svg" "png" "jpeg" }}
-{{- $formatsDelimited := delimit $supportedFormats ", " ", and " }}
-
-{{- $diagramSource := "" -}}
-
-{{- /* Initialize variables. */}}
-{{- $inner := .Inner }}
-{{- $url := "https://kroki.io/" }}
-{{- with .Page.Site.Params.kroki.kroki_server }}
-{{- $url = . }}
-{{- end }}
-{{- $outputFormat := "svg" }}
-{{- with .Get "format" }}
-  {{- $outputFormat = . }}
-{{- end }}
-
-{{/* Add attributes. */}}
-{{- $id := printf "kroki-%d" (add 1 .Ordinal) }}
-{{- $class := "" }}
-{{- with .Get "class" }}
-{{- $class = printf "diagram diagram-kroki diagram-kroki-%s %s" .Get "type" . }}
-{{- else }}
-{{- $class = printf "diagram diagram-kroki diagram-kroki-%s" (.Get "type") }}
-{{- end }}
-{{- $attrs := dict "class" $class "id" $id "alt" "diagram" }}
-
-{{- /* Render diagram */}}
-
-{{- with $diagramType := .Get "type" | strings.ToLower }}
-{{- if not (in $supportedTypes .) }}
-{{- errorf "The Kroki code block render hook was called with an invalid type %q. Valid types are %s. See %s" $diagramType $typesDelimited $.Position }}
-{{- else }}
-{{- if not (in $supportedFormats $outputFormat) }}
- {{- errorf "The Kroki code block render hook was called with an invalid output format %q. Valid types are %s. See %s" $outputFormat $formatsDelimited $.Position }}
-{{ else }}
- {{- if or $attrs.disable $.Page.Site.Params.kroki.disable }}
-   {{- warnf "Disabled Kroki code block at %s." $.Position }}
- {{- else }}
-
- {{- with $.Get "file" -}}
- {{- with $.Page.Resources.GetMatch . -}}
-   {{- $diagramSource = strings.Trim .Content "\r\n" -}}
- {{- else -}}
-   {{- errorf "The %q shortcode was unable to find %q. See %s" $.Name . $.Position -}}
- {{- end -}}
+{{- with .sourceFile -}}
+  {{- with $.Page.Resources.GetMatch . -}}
+    {{ $params := merge $params ( dict "diagramSource" strings.Trim .Content "\r\n" ) }}
+  {{- else -}}
+    {{- errorf "Shortcode %q: unable to find diagram source file %q. See %s" "kroki" . $.Position -}}
+  {{- end -}}
 {{- else -}}
- {{- $diagramSource = strings.Trim $.Inner "\r\n" -}}
+  {{ $params := merge $params ( dict "diagramSource" strings.Trim $.context.Inner "\r\n" ) }}
 {{- end -}}
 
- {{- with $diagramSource }}
-     {{- $kroki := dict
-       "diagram_source" .
-       "diagram_type" $diagramType
-       "output_format" $outputFormat
-     }}
-     {{- $opts := dict
-       "method" "post"
-       "body" ($kroki | jsonify)
-     }}
-     {{- with resources.GetRemote $url $opts }}
-       {{- with .Err }}
-         {{- errorf "The Kroki code block render hook was unable to get the remote diagram. See %s" . $.Position }}
-       {{- else }}
-         {{- $attrs = merge $attrs (dict "src" .RelPermalink) }}
-         <img
-           {{- range $k, $v := $attrs }}
-             {{- if not (eq $k "type") }}
-               {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-             {{- end }}
-           {{- end -}}
-         >
-       {{- end }}
-     {{- else }}
-       {{- errorf "The Kroki code block render hook was unable to get the remote diagram. See %s" $.Position }}
-     {{- end }}
-   {{- else }}
-     {{- errorf "The Kroki code block render hook cannot create a diagram without content. See %s" $.Position }}
-   {{- end }}
- {{- end }}
-{{- end }}
-{{ end }}
-{{- else }}
-{{- errorf "The Kroki code block render hook requires a type attribute. Valid types are %s. See %s" $typesDelimited $.Position }}
-{{- end }}
+{{ partial "diagrams/kroki-render-hook.html" $params -}}

@@ -1,1 +1,15 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "plantuml") -}}
+{{ $validAttributes := slice "theme" -}}
+
+{{ $options := dict -}}
+{{ with .Attributes.theme }}
+  {{ if ne ( printf "%T" . ) "string" -}}
+    {{ errorf "Code block %q: or string value expected for attribute %q, but got %s. Error position: %s" $.Type "theme" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "antialias" . ) -}}
+{{ end -}}
+
+{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
+                                                   "type" "plantuml"
+                                                   "options" $options
+                                                   "validAttributes" $validAttributes
+                                              ) -}}

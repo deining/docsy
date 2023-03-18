@@ -20,7 +20,9 @@ References:
 
 {{- $attrs := .context.Attributes }}
 {{- $position := .context.Position }}
-{{- $inner := .context.Inner }}
+
+{{- $sourceDiagram := .diagramSource }}
+
 {{- $url := "https://kroki.io/" }}
 {{- with .context.Page.Site.Params.kroki.kroki_server }}
   {{- $url = . }}
@@ -52,9 +54,13 @@ References:
 
 {{- $attributesDelimited := delimit $supportedAttributes ", " " and " }}
 
-{{ range $key, $value := .context.Attributes -}}
-  {{- if not ( in $supportedAttributes $key ) -}}
-    {{ errorf "Code block %q: invalid attribute %q passed. Valid attributes are %s. See %s" $.type $key $attributesDelimited $position -}}
+{{- with .do_not_validate }}
+  {{/* do nothing */}}
+{{ else }}
+  {{ range $key, $value := .context.Attributes -}}
+    {{- if not ( in $supportedAttributes $key ) -}}
+      {{ errorf "Code block %q: invalid attribute %q passed. Valid attributes are %s. See %s" $.type $key $attributesDelimited $position -}}
+    {{ end -}}
   {{ end -}}
 {{ end -}}
 
@@ -81,7 +87,7 @@ References:
   {{- if or $attrs.disable $.context.Page.Site.Params.kroki.disable }}
     {{- warnf "Disabled code block %q at %s." ( $.type | lower ) $position }}
   {{- else }}
-    {{- with $inner }}
+    {{- with $sourceDiagram }}
       {{- $kroki := dict
         "diagram_source" .
         "diagram_type" $diagramType

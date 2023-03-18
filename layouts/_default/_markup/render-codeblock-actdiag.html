@@ -1,5 +1,3 @@
-{{ $validAttributes := slice "antialias" "no-transparency" "no-doctype" "size" -}}
-
 {{ $options := dict -}}
 {{ with .Attributes.antialias }}
   {{ if ne ( printf "%T" . ) "bool" -}}
@@ -29,9 +27,7 @@
   {{ $options = merge $options ( dict "no-doctype" . ) -}}
 {{ end -}}
 
-{{ partial "diagrams/kroki-render-hook.html" ( dict "context" .
-                                                    "type" "actdiag"
-                                                    "options" $options
-                                                    "validAttributes" $validAttributes
-                                             ) 
--}}
+{{ $params := dict "validAttributes" ( slice "antialias" "no-transparency" "no-doctype" "size" ) }}
+{{ $params := merge $params ( dict "type" "actdiag" "context" . "diagramSource" .Inner) }}
+
+{{ partial "diagrams/kroki-render-hook.html" $params -}}

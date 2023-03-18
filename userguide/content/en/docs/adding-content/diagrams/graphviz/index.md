@@ -5,7 +5,7 @@ draft: false
 weight: 80
 ---
 
-```graphviz {type=GraphViz disabled=false format="svg" }
+```graphviz {type=GraphViz disabled=false format="svg" scale=72.0 }
 digraph D {
   subgraph cluster_p {
     label = "Kroki";
