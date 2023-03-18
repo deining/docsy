@@ -1,6 +1,1 @@
-{{ $supportedFormats := slice "svg" "png" "jpeg" -}}
-
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
-                                                   "type" "umlet"
-                                                   "supportedFormats" $supportedFormats
-                                             ) -}}
+{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "umlet") -}}

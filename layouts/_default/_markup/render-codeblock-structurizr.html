@@ -1,4 +1,3 @@
-{{ $supportedFormats := slice "svg" "png" "txt" "utxt" "base64" -}}
 {{ $validAttributes := slice "view-key" -}}
 
 {{ $options := dict -}}
@@ -12,6 +11,5 @@
 {{ partial "diagrams/kroki-render-hook.html" (dict "context" .
                                                    "type" "structurizr"
                                                    "options" $options
-                                                   "supportedFormats" $supportedFormats
                                                    "validAttributes" $validAttributes
                                              ) -}}

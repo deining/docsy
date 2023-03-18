@@ -1,4 +1,3 @@
-{{ $supportedFormats := slice "svg" "png" "pdf" -}}
 {{ $validAttributes := slice "antialias" "no-transparency" "no-doctype" "size" -}}
 
 {{ $options := dict -}}
@@ -33,7 +32,6 @@
 {{ partial "diagrams/kroki-render-hook.html" ( dict "context" .
                                                     "type" "seqdiag"
                                                     "options" $options
-                                                    "supportedFormats" $supportedFormats
                                                     "validAttributes" $validAttributes
                                              ) 
 -}}
