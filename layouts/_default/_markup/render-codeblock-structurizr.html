@@ -1,15 +1,12 @@
-{{ $validAttributes := slice "view-key" -}}
-
 {{ $options := dict -}}
-{{ with index .Attributes "view-key" }}
+{{ with index .Attributes "view-key" -}}
   {{ if ne ( printf "%T" . ) "string" -}}
     {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "view-key" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "no-transparency" . ) -}}
 {{ end -}}
 
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
-                                                   "type" "structurizr"
-                                                   "options" $options
-                                                   "validAttributes" $validAttributes
-                                             ) -}}
+{{ $params := dict "validAttributes" ( slice "view-key" ) -}}
+{{ $params := merge $params ( dict "type" "structurizr" "context" . "options" $options "diagramSource" .Inner) -}}
+
+{{ partial "kroki.html" $params -}}

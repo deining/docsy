@@ -1,1 +1,3 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "graphviz" "do_not_validate" true) -}}
+{{ $params := dict "type" "graphviz" "context" . "diagramSource" .Inner "do_not_validate" true -}}
+
+{{ partial "kroki.html" $params -}}

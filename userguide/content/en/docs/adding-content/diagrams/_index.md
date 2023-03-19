@@ -426,4 +426,15 @@ params:
 
 ## Read content from file
 
-{{< kroki type="actdiag" file="diagram.txt" />}}
+{{< kroki type="actdiag" format="svg" sourceFile="diagram.txt" />}}
+  _____
+ /  O__]
+/  ___]
+\   \
+ |   |
+ |   |
+ /   /
+ \   \
+ /   /
+
+My file

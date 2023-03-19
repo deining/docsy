@@ -18,7 +18,13 @@ References:
 
 {{- /* Initialize variables. */}}
 
-{{- $attrs := .context.Attributes }}
+{{ $attrs := dict -}}
+{{ if .isShortcode -}}
+  {{ $attrs = .parameters -}}
+{{ else -}}
+  {{ $attrs = .context.Attributes -}}
+{{ end -}}
+
 {{- $position := .context.Position }}
 
 {{- $sourceDiagram := .diagramSource }}
@@ -54,7 +60,7 @@ References:
 
 {{- $attributesDelimited := delimit $supportedAttributes ", " " and " }}
 
-{{- with .do_not_validate }}
+{{- if or .do_not_validate .isShortcode }}
   {{/* do nothing */}}
 {{ else }}
   {{ range $key, $value := .context.Attributes -}}
@@ -84,7 +90,7 @@ References:
 {{- /* Render diagram */}}
 
 {{- with $diagramType := .type  | lower }}
-  {{- if or $attrs.disable $.context.Page.Site.Params.kroki.disable }}
+  {{- if or $attrs.disabled $.context.Page.Site.Params.kroki.disabled }}
     {{- warnf "Disabled code block %q at %s." ( $.type | lower ) $position }}
   {{- else }}
     {{- with $sourceDiagram }}

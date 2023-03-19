@@ -1,51 +1,48 @@
-{{ $validAttributes := slice "background" "fill-color" "font-family" "font-size" "scale" "stroke-width" -}}
-
 {{ $options := dict -}}
-{{ with .Attributes.background }}
+{{ with .Attributes.background -}}
   {{ if ne ( printf "%T" . ) "string" -}}
     {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "background" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "background" . ) -}}
 {{ end -}}
 
-{{ with index .Attributes "fill-color" }}
+{{ with index .Attributes "fill-color" -}}
   {{ if ne ( printf "%T" . ) "string" -}}
     {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "fill-color" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "fill-color" . ) -}}
 {{ end -}}
 
-{{ with index .Attributes "font-family" }}
+{{ with index .Attributes "font-family" -}}
   {{ if ne ( printf "%T" . ) "string" -}}
     {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "font-family" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "font-family" . ) -}}
 {{ end -}}
 
-{{ with index .Attributes "font-size" }}
+{{ with index .Attributes "font-size" -}}
   {{ if ne ( printf "%T" . ) "string" -}}
     {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "font-size" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "font-size" . ) -}}
 {{ end -}}
 
-{{ with .Attributes.scale }}
+{{ with .Attributes.scale -}}
   {{ if ne ( printf "%T" . ) "float64" -}}
     {{ errorf "Code block %q: decimal value expected for attribute %q, but got %s. Error position: %s" $.Type "scale" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "scale" . ) -}}
 {{ end -}}
 
-{{ with index .Attributes "stroke-width" }}
+{{ with index .Attributes "stroke-width" -}}
   {{ if ne ( printf "%T" . ) "float64" -}}
     {{ errorf "Code block %q: decimal value expected for attribute %q, but got %s. Error position: %s" $.Type "stroke-width" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "stroke-width" . ) -}}
 {{ end -}}
 
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
-                                                   "type" "svgbob"
-                                                   "options" $options
-                                                   "validAttributes" $validAttributes
-                                             )
- -}}
+
+{{ $params := dict "validAttributes" ( slice "background" "fill-color" "font-family" "font-size" "scale" "stroke-width" ) -}}
+{{ $params := merge $params ( dict "type" "svgbob" "context" . "options" $options "diagramSource" .Inner) -}}
+
+{{ partial "kroki.html" $params -}}

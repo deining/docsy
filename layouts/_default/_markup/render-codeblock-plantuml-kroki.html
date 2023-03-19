@@ -1,5 +1,3 @@
-{{ $validAttributes := slice "theme" -}}
-
 {{ $options := dict -}}
 {{ with .Attributes.theme }}
   {{ if ne ( printf "%T" . ) "string" -}}
@@ -8,8 +6,7 @@
   {{ $options = merge $options ( dict "antialias" . ) -}}
 {{ end -}}
 
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
-                                                   "type" "plantuml"
-                                                   "options" $options
-                                                   "validAttributes" $validAttributes
-                                              ) -}}
+{{ $params := dict "validAttributes" ( slice "theme" ) -}}
+{{ $params := merge $params ( dict "type" "plantuml" "context" . "options" $options "diagramSource" .Inner) -}}
+
+{{ partial "kroki.html" $params -}}

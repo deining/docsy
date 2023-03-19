@@ -1,13 +1,18 @@
-{{ $params := dict "context" . }}
+{{ $params := dict "context" . "type" (.Get "type") "isShortcode" true -}}
 
-{{- with .sourceFile -}}
+{{ with .Inner }}
+{{ end }}
+
+{{- with .Get "sourceFile" -}}
   {{- with $.Page.Resources.GetMatch . -}}
-    {{ $params := merge $params ( dict "diagramSource" strings.Trim .Content "\r\n" ) }}
+    {{ $params = merge $params ( dict "diagramSource" ( strings.Trim .Content "\r\n" )) -}}
   {{- else -}}
     {{- errorf "Shortcode %q: unable to find diagram source file %q. See %s" "kroki" . $.Position -}}
   {{- end -}}
 {{- else -}}
-  {{ $params := merge $params ( dict "diagramSource" strings.Trim $.context.Inner "\r\n" ) }}
+  {{ $params = merge $params ( dict "diagramSource" ( strings.Trim .Inner "\r\n" )) -}}
 {{- end -}}
 
-{{ partial "diagrams/kroki-render-hook.html" $params -}}
+{{ $params = merge $params ( dict "parameters" .Params ) -}}
+
+{{ partial "kroki.html" $params -}}

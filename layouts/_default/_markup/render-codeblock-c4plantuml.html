@@ -1,1 +1,3 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "c4plantuml") -}}
+{{ $params := merge $params ( dict "type" "c4plantuml" "context" . "diagramSource" .Inner) -}}
+
+{{ partial "kroki.html" $params -}}

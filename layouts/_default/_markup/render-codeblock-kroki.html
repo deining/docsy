@@ -1,1 +1,3 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" .Attributes.type) "block" .Type -}}
+{{ $params := dict "type" .Attributes.type "context" . "diagramSource" .Inner "block" .Type -}}
+
+{{ partial "kroki.html" $params -}}

@@ -1,16 +1,12 @@
-{{ $validAttributes := slice "theme" -}}
-
 {{ $options := dict -}}
-{{ with .Attributes.theme }}
+{{ with .Attributes.theme -}}
   {{ if not ( or ( ne ( printf "%T" . ) "string" ) ( eq ( printf "%T" . ) "float64" )) -}}
     {{ errorf "Code block %q: decimal or string value expected for attribute %q, but got %s. Error position: %s" $.Type "theme" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "antialias" . ) -}}
 {{ end -}}
 
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" .
-                                                   "diagramSource" .Inner
-                                                   "type" "d2"
-                                                   "options" $options
-                                                   "validAttributes" $validAttributes
- ) -}}
+{{ $params := dict "validAttributes" ( slice "theme" ) -}}
+{{ $params := merge $params ( dict "type" "d2" "context" . "options" $options "diagramSource" .Inner) -}}
+
+{{ partial "kroki.html" $params -}}

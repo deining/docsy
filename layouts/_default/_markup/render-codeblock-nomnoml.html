@@ -1,3 +1,5 @@
-{{ partial "diagrams/kroki-render-hook.html" (dict "context" . "type" "nomnoml") -}}
+{{ $params := merge $params ( dict "type" "nomnoml" "context" . "diagramSource" .Inner) -}}
+
+{{ partial "kroki.html" $params -}}
 
 

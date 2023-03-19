@@ -1,37 +1,35 @@
 {{ $validAttributes := slice "antialias" "no-transparency" "no-doctype" "size" -}}
 
 {{ $options := dict -}}
-{{ with .Attributes.antialias }}
+{{ with .Attributes.antialias -}}
   {{ if ne ( printf "%T" . ) "bool" -}}
     {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "antialias" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "antialias" . ) -}}
 {{ end -}}
 
-{{ with index .Attributes "no-transparency" }}
+{{ with index .Attributes "no-transparency" -}}
   {{ if ne ( printf "%T" . ) "bool" -}}
     {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "no-transparency" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "no-transparency" . ) -}}
 {{ end -}}
 
-{{ with .Attributes.size }}
+{{ with .Attributes.size -}}
   {{ if ne ( printf "%T" . ) "string" -}}
     {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "size" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "size" . ) -}}
 {{ end -}}
 
-{{ with index .Attributes "no-doctype" }}
+{{ with index .Attributes "no-doctype" -}}
   {{ if ne ( printf "%T" . ) "bool" -}}
     {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "no-doctype" (printf "%T" .) $.Position  -}}
   {{ end -}}
   {{ $options = merge $options ( dict "no-doctype" . ) -}}
 {{ end -}}
 
-{{ partial "diagrams/kroki-render-hook.html" ( dict "context" .
-                                                    "type" "seqdiag"
-                                                    "options" $options
-                                                    "validAttributes" $validAttributes
-                                             ) 
--}}
+{{ $params := dict "validAttributes" ( slice "antialias" "no-transparency" "no-doctype" "size" ) -}}
+{{ $params := merge $params ( dict "type" "seqdiag" "context" . "options" $options "diagramSource" .Inner) -}}
+
+{{ partial "kroki.html" $params -}}
