@@ -1,12 +1,12 @@
 {{ $params := dict "context" . "type" (.Get "type") "isShortcode" true -}}
 
-{{ with .Inner }}
-{{ end }}
-
 {{- with .Get "sourceFile" -}}
   {{- with $.Page.Resources.GetMatch . -}}
     {{ $params = merge $params ( dict "diagramSource" ( strings.Trim .Content "\r\n" )) -}}
-  {{- else -}}
+    {{- with $.Inner }}
+      {{ $params = merge $params ( dict "options" ( unmarshal . )) -}}
+    {{- end }}
+    {{- else -}}
     {{- errorf "Shortcode %q: unable to find diagram source file %q. See %s" "kroki" . $.Position -}}
   {{- end -}}
 {{- else -}}

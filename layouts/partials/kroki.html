@@ -1,22 +1,6 @@
-{{- /* Credits go to Joe Mooring who authored this markdown render hook:
+{{- /* This partial is based on this markdown render hook (which was reworked and modified): 
      https://github.com/jmooring/hugo-testing/blob/hugo-forum-topic-36924/layouts/_default/_markup/render-codeblock-kroki.html
-     Renders diagrams from textual descriptions to SVG images using the Kroki service.
-
-References:
-
-- https://kroki.io/
-- https://kroki.io/#examples
-
-@param {obj} .Attributes The generic attributes from the info string.
-@param {string} .Inner The content between the leading and trailing code fences, excluding the info string.
-@param {obj} .Options The highlighting options from the info string.
-@param {int} .Ordinal The zero-based ordinal of the code block on the page.
-@param {obj} .Page A reference to the page containing the code block.
-@param {obj} .Position The position of the code block within the page content.
-@param {string} .Type The first word of the info string.
-*/}}
-
-{{- /* Initialize variables. */}}
+     Credits go to Joe Mooring for his work. */}}
 
 {{ $attrs := dict -}}
 {{ if .isShortcode -}}
@@ -48,7 +32,7 @@ References:
 
 {{- $diagramOptions := dict }}
 {{ with .options }}
-  {{ range $key, $value := .options -}}
+  {{ range $key, $value := . -}}
     {{ $diagramOptions = merge $diagramOptions ( dict $key $value ) -}}
   {{ end -}}
 {{ end -}}
