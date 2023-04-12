@@ -1,7 +1,9 @@
 ---
-title: "Tikz"
+title: "TikZ"
+linkTitle: "TikZ (drawings for LaTeX)"
 date: 2023-03-31T21:13:54+02:00
 draft: false
+weight: 179
 ---
 
 ```tikz { disabled=true }

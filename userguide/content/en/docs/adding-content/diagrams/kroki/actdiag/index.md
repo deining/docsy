@@ -3,6 +3,8 @@ title: "Activity diagrams"
 date: 2023-03-14T21:33:57+01:00
 draft: false
 weight: 10
+description: >
+  Author activity diagrams using the [actdiag](http://blockdiag.com/en/actdiag/) library.
 ---
 ## Activity diagrams
 
