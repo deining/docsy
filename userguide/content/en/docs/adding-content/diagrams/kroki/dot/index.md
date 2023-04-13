@@ -1,9 +1,11 @@
 ---
-title: "Dot"
-linkTitle: "Dot"
+title: "GraphViz diagrams (Dot language)"
+linkTitle: "Dot language (GraphViz)"
 date: 2023-03-31T21:33:43+02:00
 draft: false
 weight: 49
+description: >
+  Author diagrams using [GraphViz](https://www.graphviz.org/), using the [dot language](https://www.graphviz.org/doc/info/lang.html).
 ---
 
 ```dot { format="png"}

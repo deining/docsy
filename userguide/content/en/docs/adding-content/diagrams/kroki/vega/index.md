@@ -1,9 +1,11 @@
 ---
-title: "Vega"
-linkTitle: "Vega"
+title: "Interactive visualizations (Vega)"
+linkTitle: "Interactive visualizations (Vega)"
 date: 2023-03-14T21:51:44+01:00
 draft: false
-weight: 180
+weight: 86
+description: >
+  Author interactive visualizations using the [Vega](https://vega.github.io/vega-lite/) visualization grammar.
 ---
 
 ```vega { format=svg disabled=true}

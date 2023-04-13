@@ -1,5 +1,6 @@
 ---
-title: "Block diagrams"
+title: "Block diagrams (blockdiag)"
+linkTitle: "Block diagrams"
 date: 2023-03-14T21:37:56+01:00
 draft: false
 weight: 20

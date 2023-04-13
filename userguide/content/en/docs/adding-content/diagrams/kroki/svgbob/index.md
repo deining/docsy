@@ -1,9 +1,11 @@
 ---
-title: "ASCII Art with SvgBob"
-linkTitle: "ASCII Art (svgbob)"
+title: "ASCII Art"
+linkTitle: "ASCII Art"
 date: 2023-03-14T21:51:26+01:00
 draft: false
 weight: 20
+description: >
+  Author ASCII Art using the [svg-bob](https://github.com/ivanceras/svgbob) converter tool.
 ---
 ### ASCII Art
 

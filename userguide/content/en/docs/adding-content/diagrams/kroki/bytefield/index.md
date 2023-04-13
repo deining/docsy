@@ -1,6 +1,6 @@
 ---
-title: "Bytefield"
-linkTitle: "Bytefield"
+title: "Byte field diagrams"
+linkTitle: "Byte field diagrams"
 date: 2023-03-14T21:38:41+01:00
 draft: false
 weight: 30

@@ -1,9 +1,11 @@
 ---
-title: "TikZ"
+title: "PGF/TikZ: Drawings for LaTeX"
 linkTitle: "TikZ (drawings for LaTeX)"
 date: 2023-03-31T21:13:54+02:00
 draft: false
-weight: 179
+weight: 174
+description: >
+  Author graphics using the TikZ frontend and the underlying [PGF](https://github.com/pgf-tikz/pgf) TeX macro package.
 ---
 
 ```tikz { disabled=true }

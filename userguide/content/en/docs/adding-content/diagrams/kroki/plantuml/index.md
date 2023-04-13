@@ -1,9 +1,11 @@
 ---
-title: "Plantuml"
-linkTitle: "Plantuml (Kroki)"
+title: "UML diagrams (PlantUML)"
+linkTitle: "UML diagrams (PlantUML)"
 date: 2023-03-14T21:41:51+01:00
 draft: false
-weight: 140
+weight: 179
+description: >
+  Author UML diagrams, using [PlantUML](https://plantuml.com).
 ---
 
 ## TXT

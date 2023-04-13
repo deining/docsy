@@ -1,9 +1,11 @@
 ---
-title: "Sequence diagrams"
-linkTitle: "Sequence diagrams (seqdiag)"
+title: "Sequence diagrams (seqdiag)"
+linkTitle: "Sequence diagrams"
 date: 2023-03-14T21:38:57+01:00
 draft: false
 weight: 160
+description: >
+  Author sequence diagrams using the [seqdiag](http://blockdiag.com/en/seqdiag/) library.
 ---
 ## Sequence diagrams
 

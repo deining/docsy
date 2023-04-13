@@ -1,8 +1,11 @@
 ---
-title: "Graphviz"
+title: "Graphviz: graphs and diagrams"
+linkTitle: "Graphviz (graphs/diagrams)"
 date: 2023-03-14T21:41:00+01:00
 draft: false
-weight: 80
+weight: 70
+description: >
+  Author graphs or diagrams, using [Graphviz](https://www.graphviz.org/) graph drawing tools.
 ---
 
 ```graphviz {type=GraphViz disabled=false format="svg" scale=72.0 }

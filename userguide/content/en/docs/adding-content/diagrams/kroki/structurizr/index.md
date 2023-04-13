@@ -1,9 +1,11 @@
 ---
-title: "Structurizr"
-linkTitle: "Structurizr"
+title: "Structurizr DSL (C4 model)"
+linkTitle: "Structurizr DSL (C4)"
 date: 2023-03-14T21:51:10+01:00
 draft: false
 weight: 170
+description: >
+  Author [C4 model](https://c4model.com/) diagrams using the [Structurizr DSL](https://github.com/structurizr/dsl).
 ---
 
 ## BASE 64

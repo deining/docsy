@@ -1,9 +1,11 @@
 ---
-title: "Rack diagrams"
+title: "Rack diagrams (rackdiag)"
 linkTitle: "Rack diagrams"
 date: 2023-03-14T21:39:26+01:00
 draft: false
 weight: 150
+description: >
+  Author rack diagrams using the [nwdiag](http://blockdiag.com/en/nwdiag/) library.
 ---
 ## Rack diagrams
 
@@ -36,5 +38,5 @@ Documentation: [rackdiag][]
 }
 ```
 
-[rackdiag]: http://blockdiag.com/en/actdiag/
+[rackdiag]: http://blockdiag.com/en/nwdiag/rackdiag-examples.html
 

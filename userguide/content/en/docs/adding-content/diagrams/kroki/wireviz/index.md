@@ -1,9 +1,11 @@
 ---
-title: "Wiring diagrams"
-linkTitle: "Wiring diagrams (wireviz)"
+title: "Wiring diagrams (WireViz)"
+linkTitle: "Wiring diagrams"
 date: 2023-03-14T21:34:22+01:00
 draft: false
 weight: 200
+description: >
+  Author wiring diagrams using the [WireViz](https://github.com/formatc1702/WireViz) tool.
 ---
 
 ```wireviz { format="svg"}
