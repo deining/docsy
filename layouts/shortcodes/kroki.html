@@ -6,7 +6,7 @@
     {{- with $.Inner }}
       {{ $params = merge $params ( dict "options" ( unmarshal . )) -}}
     {{- end }}
-    {{- else -}}
+  {{- else -}}
     {{- errorf "Shortcode %q: unable to find diagram source file %q. See %s" "kroki" . $.Position -}}
   {{- end -}}
 {{- else -}}
