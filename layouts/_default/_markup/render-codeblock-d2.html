@@ -1,9 +1,9 @@
 {{ $options := dict -}}
 {{ with .Attributes.theme -}}
-  {{ if not ( or ( ne ( printf "%T" . ) "string" ) ( eq ( printf "%T" . ) "float64" )) -}}
+  {{ if not ( or ( eq ( printf "%T" . ) "string" ) ( eq ( printf "%T" . ) "float64" )) -}}
     {{ errorf "Code block %q: decimal or string value expected for attribute %q, but got %s. Error position: %s" $.Type "theme" (printf "%T" .) $.Position  -}}
   {{ end -}}
-  {{ $options = merge $options ( dict "antialias" . ) -}}
+  {{ $options = merge $options ( dict "theme" . ) -}}
 {{ end -}}
 
 {{ $params := dict "validAttributes" ( slice "theme" ) -}}
