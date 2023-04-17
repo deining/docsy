@@ -7,9 +7,16 @@ weight: 20
 description: >
   Author block diagrams using the [blockdiag](http://blockdiag.com/en/blockdiag/) library.
 ---
-## Block diagrams
+## Overview and example diagrams
 
-Documentation: [blockdiag][]
+The [blockdiag library](https://github.com/blockdiag/blockdiag) allows you do generate block diagrams via a textual description of the blocks to be depicted. Use the [documentation](http://blockdiag.com/en/blockdiag/) for syntax details.
+Also, you may find these [example diagrams](https://github.com/blockdiag/blockdiag/tree/master/examples) useful, too.
+
+
+## Authoring your block diagram
+
+To embed a block diagram in your page, use a `blockdiag` code block and put the diagram source in the body of the block. An example is given below: 
+
 
 ````
 ```blockdiag
@@ -24,7 +31,9 @@ Documentation: [blockdiag][]
 ```
 ````
 
-```blockdiag { disabled=false }
+The code block above renders to this block diagram:
+
+```blockdiag
 {
   Docsy -> supports -> "block diagrams";
   Docsy -> is -> "awesome!";
@@ -35,5 +44,27 @@ Documentation: [blockdiag][]
 }
 ```
 
-[blockdiag]: http://blockdiag.com/en/blockdiag/
+## Supported output formats
 
+The default output format is `svg`. By using the `format` option (see below), you can opt for `png` or `pdf` as output format, too. 
+
+## Diagram options
+
+Your diagram can be customized using the options listed below: 
+
+| Option name     | Allowable values                                  | Description                                  |
+|-----------------|---------------------------------------------------|----------------------------------------------|
+| format          | _svg_, _png_ or _pdf_                             | Output format of generated diagram image     |
+| disabled        | boolean,<br>_true_ or _false_                     | Disable/skip diagram                         |
+| antialias       | flag,<br>empty string ("")                        | Pass diagram image to anti-alias filter      |
+| no-transparency | flag,<br>empty string ("")                        | No transparent diagram background (PNG only) |
+| size            | dimensions,<br>_width_x_height_<br>e.g. _320x240_ | Size of diagram                              |
+| no-doctype      | flag,<br>empty string ("")                        | Omit doctype definition tags (SVG only)      |
+
+If you want to make use of these option(s), you have to give them as attributes to your `blockdiag` code block, as shown in the listing below:
+
+````
+```blockdiag {format="svg" disabled=false antialias="" no-transparency="" size="30x30" no-doctype="" }
+diagram source goes here
+```
+````

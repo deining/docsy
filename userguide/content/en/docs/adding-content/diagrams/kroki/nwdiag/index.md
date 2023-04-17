@@ -60,7 +60,7 @@ diagram {
 
 ## Supported output formats
 
-The default output format is _svg_. By using the `format` option (see below), you can opt for `png` or `pdf` as output format, too. 
+The default output format is `svg`. By using the `format` option (see below), you can opt for `png` or `pdf` as output format, too. 
 
 ## Diagram options
 
