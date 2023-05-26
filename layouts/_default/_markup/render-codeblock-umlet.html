@@ -1,3 +1,3 @@
-{{ $params := merge $params ( dict "type" "umlet" "context" . "diagramSource" .Inner) -}}
+{{ $params := dict "type" "umlet" "context" . "diagramSource" .Inner -}}
 
 {{ partial "kroki.html" $params -}}

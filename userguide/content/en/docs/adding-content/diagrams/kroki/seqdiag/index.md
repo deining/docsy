@@ -32,7 +32,7 @@ To embed an sequence diagram in your page, use a `seqdiag` code block and put th
 
 The code block above renders to this sequence diagram:
 
-```seqdiag { disabled=false options=\{ "key 1": "value", "key 2": "value" \}}
+```seqdiag { disabled=false }
 {
   "Docsy user" -> "Discussion board" [label = "ask question"];
   "Discussion board" -> "Community member" [label = "read question"];
