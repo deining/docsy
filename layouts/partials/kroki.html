@@ -11,8 +11,6 @@
 
 {{- $position := .context.Position }}
 
-{{- $sourceDiagram := .diagramSource }}
-
 {{- $url := "https://kroki.io/" }}
 {{- with .context.Page.Site.Params.kroki.kroki_server }}
   {{- $url = . }}
@@ -37,7 +35,7 @@
   {{ end -}}
 {{ end -}}
 
-{{- $supportedAttributes := slice "disabled" "format" "type" }}
+{{- $supportedAttributes := slice "disabled" "format" "type" "sourcefile" }}
 {{- range .validAttributes }}
   {{- $supportedAttributes = $supportedAttributes | append . }}
 {{- end }}
@@ -77,7 +75,7 @@
   {{- if or $attrs.disabled $.context.Page.Site.Params.kroki.disabled }}
     {{- warnf "Disabled code block %q at %s." ( $.type | lower ) $position }}
   {{- else }}
-    {{- with $sourceDiagram }}
+    {{- with $.diagramSource }}
       {{- $kroki := dict
         "diagram_source" .
         "diagram_type" $diagramType
