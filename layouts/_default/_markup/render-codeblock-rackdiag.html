@@ -30,6 +30,6 @@
 {{ end -}}
 
 {{ $params := dict "validAttributes" ( slice "antialias" "no-transparency" "no-doctype" "size" ) -}}
-{{ $params := merge $params ( dict "type" "rackdiag" "context" . "options" $options "diagramSource" .Inner) -}}
+{{ $params := merge $params ( dict "type" "rackdiag" "context" . "options" $options ) -}}
 
 {{ partial "kroki.html" $params -}}

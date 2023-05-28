@@ -61,7 +61,7 @@ The code block above renders to this activity diagram:
 
 ### Reading diagram source from file
 
-For more complex diagrams, there is the option to read the diagram source from a file. To do so, pass the parameter `sourcefile` as attribute of the code block:
+For more complex activity diagrams, there is the option to read the diagram source from a file. To do so, pass the parameter `sourcefile` as attribute of the code block:
 
 ````
 ```actdiag { sourcefile="act-simple.diag" }
@@ -80,7 +80,7 @@ Your diagram can be customized using the options listed below:
 
 | Option name     | Allowable values                                  | Description                                  |
 |-----------------|---------------------------------------------------|----------------------------------------------|
-| sourcefile      | string              _                             | Name of file containing diagram source text  |
+| sourcefile      | string                                            | Name of file containing diagram source text  |
 | format          | _svg_, _png_ or _pdf_                             | Output format of generated diagram image     |
 | disabled        | boolean,<br>_true_ or _false_                     | Disable/skip diagram                         |
 | antialias       | flag,<br>empty string ("")                        | Pass diagram image to anti-alias filter      |

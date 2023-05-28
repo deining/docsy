@@ -1,0 +1,8 @@
+{
+  Docsy -> supports -> "block diagrams";
+  Docsy -> is -> "awesome!";
+
+  Docsy [color = "greenyellow"];
+  "block diagrams" [color = "pink"];
+  "awesome!" [color = "orange"];
+}
