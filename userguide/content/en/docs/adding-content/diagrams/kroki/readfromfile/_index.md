@@ -7,7 +7,7 @@ weight: 2
 description: >
   Using the shortcode *kroki*, you can read the diagram source from a file.
 ---
-{{< kroki type="actdiag" format="svg" sourceFile="diagram.txt" >}}
+{{< kroki disabled=true type="actdiag" format="svg" sourceFile="diagram.txt" >}}
 {
   "no-doctype": "true"
 }

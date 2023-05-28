@@ -2,6 +2,23 @@
      https://github.com/jmooring/hugo-testing/blob/hugo-forum-topic-36924/layouts/_default/_markup/render-codeblock-kroki.html
      Credits go to Joe Mooring for his work. */}}
 
+
+{{ $codeBlock := "kroki" -}}
+{{ with .type -}}
+  {{ $codeBlock = . -}}
+  {{ with $.block -}}
+    {{ $codeBlock = . -}}
+  {{ end -}}
+{{ end -}}
+     
+{{- $diagramOptions := dict }}
+
+{{ with .options }}
+  {{ range $key, $value := . -}}
+    {{ $diagramOptions = merge $diagramOptions ( dict $key $value ) -}}
+  {{ end -}}
+{{ end -}}
+     
 {{ $attrs := dict -}}
 {{ if .isShortcode -}}
   {{ $attrs = .parameters -}}
@@ -9,6 +26,21 @@
   {{ $attrs = .context.Attributes -}}
 {{ end -}}
 
+{{ $diagram_source := "" -}}
+
+{{- with $attrs.sourcefile -}}
+  {{- with $.context.Page.Resources.GetMatch . -}}
+    {{ $diagram_source = strings.Trim .Content "\r\n" -}}
+    {{- with $.context.Inner }}
+      {{ $diagramOptions = merge $diagramOptions ( unmarshal . ) -}}
+    {{- end }}
+  {{- else -}}
+    {{- errorf "Shortcode %q: unable to find diagram source file %q. See %s" $.type . $.Position -}}
+  {{- end -}}
+{{- else -}}
+  {{ $diagram_source = strings.Trim $.context.Inner "\r\n" -}}
+{{- end -}}
+          
 {{- $position := .context.Position }}
 
 {{- $url := "https://kroki.io/" }}
@@ -19,21 +51,6 @@
 {{- with $attrs.format }}
   {{- $outputFormat = . }}
 {{- end }}
-
-{{ $codeBlock := "kroki" -}}
-{{ with .type -}}
-  {{ $codeBlock = . -}}
-  {{ with $.block -}}
-    {{ $codeBlock = . -}}
-  {{ end -}}
-{{ end -}}
-
-{{- $diagramOptions := dict }}
-{{ with .options }}
-  {{ range $key, $value := . -}}
-    {{ $diagramOptions = merge $diagramOptions ( dict $key $value ) -}}
-  {{ end -}}
-{{ end -}}
 
 {{- $supportedAttributes := slice "disabled" "format" "type" "sourcefile" }}
 {{- range .validAttributes }}
@@ -75,7 +92,7 @@
   {{- if or $attrs.disabled $.context.Page.Site.Params.kroki.disabled }}
     {{- warnf "Disabled code block %q at %s." ( $.type | lower ) $position }}
   {{- else }}
-    {{- with $.diagramSource }}
+    {{- with $diagram_source }}
       {{- $kroki := dict
         "diagram_source" .
         "diagram_type" $diagramType

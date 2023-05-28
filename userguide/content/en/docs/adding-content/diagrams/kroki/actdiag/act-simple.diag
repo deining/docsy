@@ -1,0 +1,15 @@
+{
+  write -> convert -> image
+
+  lane Sysadmin {
+    write [label = "Setup docsy"];
+
+  }
+  lane Writer {
+    label = "Technical writer"
+    convert [label = "Author content"];
+  }
+  lane Boss {
+    image [label = "Approve gratification"];
+  }
+}
