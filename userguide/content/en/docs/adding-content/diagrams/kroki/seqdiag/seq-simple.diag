@@ -1,0 +1,10 @@
+{
+  "Docsy user" -> "Discussion board" [label = "ask question"];
+  "Discussion board" -> "Community member" [label = "read question"];
+  "Community member"  -> "Docsy test instance" [label = "investigate issue raised"];
+  "Community member"  <-- "Docsy test instance" [label = "come up with solution"];
+  "Discussion board"  <-- "Community member" [label = "propose solution"];
+  "Docsy user"  <-- "Discussion board" [label = "check proposed solution"];
+  "Docsy user"  -> "Discussion board" [label = "mark question as resolved"];
+  "Docsy user"  -> "Docsy user" [label = "Being happy"];
+}
