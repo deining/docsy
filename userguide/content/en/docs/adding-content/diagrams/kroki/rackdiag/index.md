@@ -68,7 +68,7 @@ Your diagram can be customized using the options listed below:
 
 | Option name     | Allowable values                                  | Description                                  |
 |-----------------|---------------------------------------------------|----------------------------------------------|
-| sourcefile      | string                                            | Name of file containing diagram source text  |
+| sourcefile      | string                                            | Name of file containing diagram source code  |
 | format          | _svg_, _png_ or _pdf_                             | Output format of generated diagram image     |
 | disabled        | boolean,<br>_true_ or _false_                     | Disable/skip diagram                         |
 | antialias       | flag,<br>empty string ("")                        | Pass diagram image to anti-alias filter      |
@@ -87,7 +87,7 @@ diagram source goes here
 Alternatively, when reading the diagram source from a file, the parameters can be given inside the code block, too. Use the json format for notation inside the body of your block:
 
 ````
-```rackdiag { sourcefile="block-simple.diag" format="svg" disabled=false antialias="" no-transparency="" size="30x30" no-doctype="" }
+```rackdiag { sourcefile="rack-simple.diag" format="svg" disabled=false antialias="" no-transparency="" size="30x30" no-doctype="" }
 {
   "format": "svg",
   "disabled": "false",

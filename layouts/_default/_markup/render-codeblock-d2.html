@@ -6,7 +6,14 @@
   {{ $options = merge $options ( dict "theme" . ) -}}
 {{ end -}}
 
-{{ $params := dict "validAttributes" ( slice "theme" ) -}}
+{{ with index .Attributes "sketch" -}}
+  {{ if ne ( printf "%T" . ) "bool" -}}
+    {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "sketch" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "sketch" . ) -}}
+{{ end -}}
+
+{{ $params := dict "validAttributes" ( slice "theme" "sketch" ) -}}
 {{ $params := merge $params ( dict "type" "d2" "context" . "options" $options "diagramSource" .Inner) -}}
 
 {{ partial "kroki.html" $params -}}

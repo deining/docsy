@@ -66,7 +66,7 @@ Your diagram can be customized using the options listed below:
 
 | Option name     | Allowable values                                  | Description                                  |
 |-----------------|---------------------------------------------------|----------------------------------------------|
-| sourcefile      | string                                            | Name of file containing diagram source text  |
+| sourcefile      | string                                            | Name of file containing diagram source code  |
 | format          | _svg_, _png_ or _pdf_                             | Output format of generated diagram image     |
 | disabled        | boolean,<br>_true_ or _false_                     | Disable/skip diagram                         |
 | antialias       | flag,<br>empty string ("")                        | Pass diagram image to anti-alias filter      |

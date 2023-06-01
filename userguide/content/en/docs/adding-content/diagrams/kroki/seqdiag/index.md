@@ -34,7 +34,7 @@ To embed an sequence diagram in your page, use a `seqdiag` code block and put th
 
 The code block above renders to this sequence diagram:
 
-```seqdiag { disabled=false }
+```seqdiag
 {
   "Docsy user" -> "Discussion board" [label = "ask question"];
   "Discussion board" -> "Community member" [label = "read question"];
@@ -68,7 +68,7 @@ Your diagram can be customized using the options listed below:
 
 | Option name     | Allowable values                                  | Description                                  |
 |-----------------|---------------------------------------------------|----------------------------------------------|
-| sourcefile      | string                                            | Name of file containing diagram source text  |
+| sourcefile      | string                                            | Name of file containing diagram source code  |
 | format          | _svg_, _png_ or _pdf_                             | Output format of generated diagram image     |
 | disabled        | boolean,<br>_true_ or _false_                     | Disable/skip diagram                         |
 | antialias       | flag,<br>empty string ("")                        | Pass diagram image to anti-alias filter      |
@@ -87,7 +87,7 @@ diagram source goes here
 Alternatively, when reading the diagram source from a file, the parameters can be given inside the code block, too. Use the json format for notation inside the body of your block:
 
 ````
-```seqdiag { sourcefile="block-simple.diag" format="svg" disabled=false antialias="" no-transparency="" size="30x30" no-doctype="" }
+```seqdiag { sourcefile="seq-simple.diag" format="svg" disabled=false antialias="" no-transparency="" size="30x30" no-doctype="" }
 {
   "format": "svg",
   "disabled": "false",
