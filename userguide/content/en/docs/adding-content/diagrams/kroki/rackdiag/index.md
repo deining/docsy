@@ -79,7 +79,7 @@ Your diagram can be customized using the options listed below:
 If you want to make use of these option(s), you have to give them as attributes to your `rackdiag` code block, as shown in the listing below:
 
 ````
-```rackdiag {format="svg" disabled=false antialias="" no-transparency="" size="30x30" no-doctype="" }
+```rackdiag { format="svg" disabled=false antialias="" no-transparency="" size="30x30" no-doctype="" }
 diagram source goes here
 ```
 ````
