@@ -46,9 +46,8 @@ Alternatively, when reading the diagram source from a file, the parameters can b
 {
   "format": "svg",
   "disabled": "false",
-  "antialias": "",
-  "no-transparency": "",
-  "size": "30x30"
+  "sketch": "true",
+  "theme": "buttered-toast"
 }
 ```
 ````
