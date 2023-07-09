@@ -11,10 +11,38 @@ description: >
 
 [Kroki](https://kroki.io) is a free web service for rendering diagrams of all kind, in total you can choose between 26 different [diagram types](https://kroki.io/#support):
 
-| Diagram type        | Output formats   | Renderer                                      | Supported options                            |
-|---------------------|------------------| ----------------------------------------------|----------------------------------------------|
-| [Activity diagrams](../actdiag/)       | svg, png, pdf    | [actdiag](http://blockdiag.com/en/actdiag/)   | antialias, no-transparency, size, no-doctype |
-| [ASCII Art](../actdiag/)               | svg, png, pdf    | [svgbob](https://github.com/ivanceras/svgbob) | background, font-family, font-size, fill-color, scale, stroke-width  |
+| Diagram type                   | Output formats             | Renderer          | Supported options                                                    |
+|--------------------------------|----------------------------|-------------------|----------------------------------------------------------------------|
+| [Activity diagrams][]          | svg, png, pdf              | [actdiag][]       | antialias, no-transparency, size, no-doctype                         |
+| [ASCII Art][]                  | svg, png, pdf              | [svgbob][]        | background, font-family, font-size, fill-color, scale, stroke-width  |
+| [Block diagrams][]             | svg, png, pdf              | [blockdiag][]     | antialias, no-transparency, size, no-doctype                         |
+| [Business process diagrams][]  | svg                        | [bpmn-js][]       | n/a                                                                  |
+| [Byte field diagrams][]        | svg                        | [bytefield-svg][] | n/a                                                                  |
+| [C4 with PlantUML][]           | svg, png, jpg, txt, base64 | [C4-PlantUML][]   | n/a                                                                  |
+| [D2 diagrams][]                | svg                        | [D2][]            | n/a                                                                  |
+| [Database diagrams][]          | svg                        | [dbml-renderer][] | n/a                                                                  |
+| [Diagrams Through Ascii Art][] | svg, png                   | [ditaa][] | n/a                                                                  |
+
+[Activity diagrams]: ../actdiag/
+[ASCII Art]: ../svgbob/
+[Block diagrams]: ../blockdiag/
+[Business process diagrams]: ../bpmn/
+[Byte field diagrams]: ../bytefield/
+[C4 with PlantUML]: ../c4plantuml/
+[D2 diagrams]: ../d2/
+[Database diagrams]: ../dbml/
+[Diagrams Through Ascii Art]: ../ditaa
+
+[actdiag]: http://blockdiag.com/en/actdiag/
+[svgbob]: https://github.com/ivanceras/svgbob
+[blockdiag]: http://blockdiag.com/en/blockdiag/
+[bpmn-js]: https://github.com/bpmn-io/bpmn-js
+[bytefield-svg]: https://github.com/Deep-Symmetry/bytefield-svg
+[C4-PlantUML]: https://github.com/plantuml-stdlib/C4-PlantUML
+[D2]: https://d2lang.com
+[dbml-renderer]: https://github.com/softwaretechnik-berlin/dbml-renderer
+[ditaa]: https://ditaa.sourceforge.net/
+
 
 ```kroki { type="graphviz" disabled=true }
 digraph D {
