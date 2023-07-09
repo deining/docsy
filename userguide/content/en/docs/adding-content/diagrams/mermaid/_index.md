@@ -39,7 +39,7 @@ With hugo version 0.93 or higher, support of Mermaid diagrams is automatically e
 
 If you are using hugo version 0.92 or lower, you need to enable Mermaid manually by updating your `hugo.toml`/`hugo.yaml`/`hugo.json`:
 
-{{< tabpane persistLang=false >}}
+{{< tabpane >}}
 {{< tab header="Hugo version <= 0.92 only:" disabled=true />}}
 {{< tab header="hugo.toml" lang="toml" >}}
 [params.mermaid]
@@ -63,7 +63,7 @@ params:
 
 If needed, you can define custom settings for your diagrams, such as themes, padding in your `hugo.toml`/`hugo.yaml`/`hugo.json`.
 
-{{< tabpane persistLang=false >}}
+{{< tabpane >}}
 {{< tab header="Configuration file:" disabled=true />}}
 {{< tab header="hugo.toml" lang="toml" >}}
 [params.mermaid]

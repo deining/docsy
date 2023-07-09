@@ -22,7 +22,7 @@ As the diagram data is transported via the browser, the diagrams.net server does
 
 To disable detection of diagrams, update `hugo.toml`/`hugo.yaml`/`hugo.json`:
 
-{{< tabpane persistLang=false >}}
+{{< tabpane >}}
 {{< tab header="Configuration file:" disabled=true />}}
 {{< tab header="hugo.toml" lang="toml" >}}
 [params.drawio]
@@ -46,7 +46,7 @@ params:
 
 You can also [deploy and use your own server](https://github.com/jgraph/docker-drawio/blob/master/README.md) for editing diagrams, in which case update the configuration to point to that server:
 
-{{< tabpane persistLang=false >}}
+{{< tabpane >}}
 {{< tab header="Configuration file:" disabled=true />}}
 {{< tab header="hugo.toml" lang="toml" >}}
 [params.drawio]

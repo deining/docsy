@@ -57,7 +57,7 @@ Foo -> Foo7: To queue
 
 To enable/disable PlantUML, update `hugo.toml`/`hugo.yaml`/`hugo.json`:
 
-{{< tabpane persistLang=false >}}
+{{< tabpane >}}
 {{< tab header="Configuration file:" disabled=true />}}
 {{< tab header="hugo.toml" lang="toml" >}}
 [params.plantuml]
@@ -81,7 +81,7 @@ params:
 
 Other optional settings are:
 
-{{< tabpane persistLang=false >}}
+{{< tabpane >}}
 {{< tab header="Configuration file:" disabled=true />}}
 {{< tab header="hugo.toml" lang="toml" >}}
 [params.plantuml]

@@ -45,7 +45,7 @@ digraph D {
 
 You can also [deploy and use your own server](https://docs.kroki.io/kroki/setup/install/) to deliver diagrams. In this case update hugo's configuration file to point to that server:
 
-{{< tabpane persistLang=false >}}
+{{< tabpane >}}
 {{< tab header="Configuration file:" disabled=true />}}
 {{< tab header="hugo.toml" lang="toml" >}}
 [params.kroki]

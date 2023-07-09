@@ -71,7 +71,7 @@ Automatically renders to:
 
 To enable/disable MarkMap, update `hugo.toml`/`hugo.yaml`/`hugo.json`:
 
-{{< tabpane persistLang=false >}}
+{{< tabpane >}}
 {{< tab header="Configuration file:" disabled=true />}}
 {{< tab header="hugo.toml" lang="toml" >}}
 [params.markmap]
