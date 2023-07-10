@@ -11,27 +11,63 @@ description: >
 
 [Kroki](https://kroki.io) is a free web service for rendering diagrams of all kind, in total you can choose between 26 different [diagram types](https://kroki.io/#support):
 
-| Diagram type                   | Output formats             | Renderer          | Supported options                                                    |
-|--------------------------------|----------------------------|-------------------|----------------------------------------------------------------------|
-| [Activity diagrams][]          | svg, png, pdf              | [actdiag][]       | antialias, no-transparency, size, no-doctype                         |
-| [ASCII Art][]                  | svg, png, pdf              | [svgbob][]        | background, font-family, font-size, fill-color, scale, stroke-width  |
-| [Block diagrams][]             | svg, png, pdf              | [blockdiag][]     | antialias, no-transparency, size, no-doctype                         |
-| [Business process diagrams][]  | svg                        | [bpmn-js][]       | n/a                                                                  |
-| [Byte field diagrams][]        | svg                        | [bytefield-svg][] | n/a                                                                  |
-| [C4 with PlantUML][]           | svg, png, jpg, txt, base64 | [C4-PlantUML][]   | n/a                                                                  |
-| [D2 diagrams][]                | svg                        | [D2][]            | n/a                                                                  |
-| [Database diagrams][]          | svg                        | [dbml-renderer][] | n/a                                                                  |
-| [Diagrams Through Ascii Art][] | svg, png                   | [ditaa][] | n/a                                                                  |
+| Diagram type                        | Output formats             | Renderer          | Supported options                                                   |
+|-------------------------------------|----------------------------|-------------------|---------------------------------------------------------------------|
+| [Activity diagrams][]               | svg, png, pdf              | [actdiag][]       | antialias, no-transparency, size, no-doctype                        |
+| [ASCII Art][]                       | svg, png, pdf              | [svgbob][]        | background, font-family, font-size, fill-color, scale, stroke-width |
+| [Block diagrams][]                  | svg, png, pdf              | [blockdiag][]     | antialias, no-transparency, size, no-doctype                        |
+| [Business process diagrams][]       | svg                        | [bpmn-js][]       | n/a                                                                 |
+| [Byte field diagrams][]             | svg                        | [bytefield-svg][] | n/a                                                                 |
+| [C4 model diagrams (PlantUML)][]    | svg, png, jpg, txt, base64 | [C4-PlantUML][]   | n/a                                                                 |
+| [C4 model diagrams (Structurizr)][] | svg, png, jpg, txt, base64 | [Structurizr][]   | view-key                                                            |
+| [D2 diagrams][]                     | svg                        | [D2][]            | theme, sketch                                                       |
+| [Database diagrams][]               | svg                        | [dbml-renderer][] | n/a                                                                 |
+| [Diagrams Through Ascii Art][]      | svg, png                   | [ditaa][]         | n/a                                                                 |
+| [Drawings for LaTeX][]              | svg, png, jpg, pdf         | [PGF/TikZ][]      | n/a                                                                 |
+| [Entity-Relationship diagrams][]    | svg, png, jpg, pdf         | [erd][]           | n/a                                                                 |
+| [GraphViz diagrams][]               | svg, png, jpg, pdf         | [GraphViz][]      | [graph|node|edge]-attribute-{name}, layout, scale                   |
+| [Hand-drawn like diagrams][]        | svg                        | [Excalidraw][]    | n/a                                                                 |
+| [Interactive graphics][]            | svg, png, pdf              | [Vega Lite][]     | n/a                                                                 |
+| [Interactive visualizations][]      | svg, png, pdf              | [Vega][]          | n/a                                                                 |
+| [Mermaid charts and diagrams][]     | svg, png                   | [Mermaid][]       | see complete [list of options][] in Mermaid source code             |
+| [Network diagrams][]                | svg, png, pdf              | [nwdiag][]        | antialias, no-transparency, size, no-doctype                        |
+| [Packet diagrams][]                 | svg, png, pdf              | [nwdiag][]        | antialias, no-transparency, size, no-doctype                        |
+| [Pikchr diagrams][]                 | svg                        | [Pickchr][]       | n/a                                                                 |
+| [Rack diagrams][]                   | svg, png, pdf              | [nwdiag][]        | antialias, no-transparency, size, no-doctype                        |
+| [Sequence diagrams][]               | svg, png, pdf              | [seqdiag][]       | antialias, no-transparency, size, no-doctype                        |
+| [Timing diagrams][]                 | svg, png, jpg, pdf         | [WaveDrom][]      | n/a                                                                 |
+| [UML diagrams (nomnoml)][]          | svg, png, jpg, pdf         | [nomnoml][]       | n/a                                                                 |
+| [UML diagrams (PlantUML)][]         | svg, png, jpg, pdf         | [PlantUML][]      | theme                                                               |
+| [UML diagrams (UMLet)][]            | svg, png, jpg, pdf         | [UMLet][]         | n/a                                                                 |
+| [Wiring diagrams][]                 | svg, png, pdf              | [WireViz][]       | n/a                                                                 |
 
 [Activity diagrams]: ../actdiag/
 [ASCII Art]: ../svgbob/
 [Block diagrams]: ../blockdiag/
 [Business process diagrams]: ../bpmn/
 [Byte field diagrams]: ../bytefield/
-[C4 with PlantUML]: ../c4plantuml/
+[C4 model diagrams (PlantUML)]: ../
+[C4 model diagrams (Structurizr)]: ../structurizr
 [D2 diagrams]: ../d2/
 [Database diagrams]: ../dbml/
-[Diagrams Through Ascii Art]: ../ditaa
+[Diagrams Through Ascii Art]: ../ditaa/
+[Drawings for LaTeX]: ../tikz/
+[Entity-Relationship diagrams]: ../erd/
+[GraphViz diagrams]: ../graphviz/
+[Hand-drawn like diagrams]: ../excalidraw/
+[Interactive graphics]: ../vegalite/
+[Interactive visualizations]: ../vega/
+[Mermaid charts and diagrams]: ../mermaid/
+[Network diagrams]: ../nwdiag/
+[Packet diagrams]: ../packetdiag/
+[Pikchr diagrams]: ../pikchr/
+[Rack diagrams]: ../rackdiag/
+[Sequence diagrams]: ../seqdiag/
+[Timing diagrams]: ../wavedrom/
+[UML diagrams (nomnoml)]: ../nomnoml/
+[UML diagrams (PlantUML)]: ../plantuml/
+[UML diagrams (UMLet)]: ../umlet/
+[Wiring diagrams]: ../wireviz/
 
 [actdiag]: http://blockdiag.com/en/actdiag/
 [svgbob]: https://github.com/ivanceras/svgbob
@@ -39,10 +75,26 @@ description: >
 [bpmn-js]: https://github.com/bpmn-io/bpmn-js
 [bytefield-svg]: https://github.com/Deep-Symmetry/bytefield-svg
 [C4-PlantUML]: https://github.com/plantuml-stdlib/C4-PlantUML
+[Structurizr]: https://github.com/structurizr/dsl
 [D2]: https://d2lang.com
 [dbml-renderer]: https://github.com/softwaretechnik-berlin/dbml-renderer
 [ditaa]: https://ditaa.sourceforge.net/
-
+[PGF/TikZ]: https://github.com/pgf-tikz/pgf
+[erd]: https://github.com/BurntSushi/erd
+[GraphViz]: https://gitlab.com/graphviz/graphviz
+[Excalidraw]: https://excalidraw.com
+[Vega Lite]: https://vega.github.io/vega-lite/
+[Vega]: https://vega.github.io/vega/
+[Mermaid]: https://mermaid.js.org/
+[list of options]: https://github.com/mermaid-js/mermaid/blob/master/packages/mermaid/src/config.type.ts
+[nwdiag]: http://blockdiag.com/en/nwdiag/
+[Pickchr]: https://pikchr.org/
+[seqdiag]: http://blockdiag.com/en/seqdiag/
+[WaveDrom]: https://wavedrom.com/
+[nomnoml]: https://www.nomnoml.com/
+[PlantUML]:https://plantuml.com/
+[UMLet]: https://www.umlet.com/
+[WireViz]: https://github.com/wireviz/WireViz
 
 ```kroki { type="graphviz" disabled=true }
 digraph D {

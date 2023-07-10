@@ -5,11 +5,11 @@ date: 2023-03-14T21:39:13+01:00
 draft: false
 weight: 120
 description: >
-  Author packet diagrams using the [nwdiag](http://blockdiag.com/en/nwdiag/) library.
+  Author packet diagrams using the [packetdiag](http://blockdiag.com/en/nwdiag/) library.
 ---
 ## Overview and example diagrams
 
-The [nwdiag library](https://github.com/blockdiag/nwdiag/tree/master/src/packetdiag) allows you do generate packet diagrams via a textual description of the packet to be depicted. Use the [documentation](http://blockdiag.com/en/nwdiag/packetdiag-examples.html) for syntax details.
+The `packetdiag` script from the [nwdiag library](https://github.com/blockdiag/nwdiag/tree/master/src/packetdiag) allows you do generate packet diagrams via a textual description of the packet to be depicted. Use the [documentation](http://blockdiag.com/en/nwdiag/packetdiag-examples.html) for syntax details.
 Also, you may find this [example diagram](https://github.com/blockdiag/nwdiag/tree/master/examples/packetdiag) useful, too.
 
 ## Authoring your packet diagram
