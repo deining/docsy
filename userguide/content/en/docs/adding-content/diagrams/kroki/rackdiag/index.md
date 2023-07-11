@@ -7,7 +7,7 @@ weight: 150
 description: >
   Author rack diagrams using the `rackdiag` script from the [nwdiag](http://blockdiag.com/en/nwdiag/) library.
 ---
-## Overview and example diagrams
+## Overview
 
 The `rackdiag` script from the [nwdiag library](https://github.com/blockdiag/nwdiag/tree/master/src/packetdiag) allows you do generate rack diagrams via a textual description of the rack to be depicted. Use the [documentation](http://blockdiag.com/en/nwdiag/rackdiag-examples.html) for syntax details.
 

@@ -8,7 +8,7 @@ description: >
   Author byte field diagrams using the [bytefield-svg](https://github.com/Deep-Symmetry/bytefield-svg) node module.
 ---
 
-## Overview and example diagrams
+## Overview
 
 The [bytefield-svg node module](https://github.com/Deep-Symmetry/bytefield-svg) allows you do generate diagrams for network protocols, memory layouts, or similar binary structures via a textual description. Use the [documentation](https://bytefield-svg.deepsymmetry.org) for syntax details.
 

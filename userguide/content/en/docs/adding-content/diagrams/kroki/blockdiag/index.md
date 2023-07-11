@@ -10,7 +10,7 @@ description: >
 ## Overview and example diagrams
 
 The [blockdiag library](https://github.com/blockdiag/blockdiag) allows you do generate block diagrams via a textual description of the blocks to be depicted. Use the [documentation](http://blockdiag.com/en/blockdiag/) for syntax details.
-Also, you may find these [example diagrams](https://github.com/blockdiag/blockdiag/tree/master/examples) useful, too.
+You may find these [example diagrams](https://github.com/blockdiag/blockdiag/tree/master/examples) useful, too.
 
 
 ## Authoring your block diagram

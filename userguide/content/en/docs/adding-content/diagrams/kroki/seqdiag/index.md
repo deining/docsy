@@ -10,7 +10,7 @@ description: >
 ## Overview and example diagrams
 
 The [seqdiag library](https://github.com/blockdiag/seqdiag) allows you do generate activity diagrams via a textual description of the activity to be depicted. Use the [documentation](http://blockdiag.com/en/seqdiag/) for syntax details.
-Also, you may find this [example diagram](http://blockdiag.com/en/seqdiag/examples.html) useful, too.
+You may find this [example diagram](http://blockdiag.com/en/seqdiag/examples.html) useful, too.
 
 ## Authoring your sequence diagram
 

@@ -10,7 +10,7 @@ description: >
 ## Overview and example diagrams
 
 The `packetdiag` script from the [nwdiag library](https://github.com/blockdiag/nwdiag/tree/master/src/packetdiag) allows you do generate packet diagrams via a textual description of the packet to be depicted. Use the [documentation](http://blockdiag.com/en/nwdiag/packetdiag-examples.html) for syntax details.
-Also, you may find this [example diagram](https://github.com/blockdiag/nwdiag/tree/master/examples/packetdiag) useful, too.
+You may find this [example diagram](https://github.com/blockdiag/nwdiag/tree/master/examples/packetdiag) useful, too.
 
 ## Authoring your packet diagram
 

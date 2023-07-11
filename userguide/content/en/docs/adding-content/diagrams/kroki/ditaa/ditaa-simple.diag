@@ -1,0 +1,15 @@
++-----------+  +------+   +---------------+
+| cGRE      |  | cBLK |   | cYEL          |
+| Markdown  |--+ hugo +-->| great looking |
+| documents |  |      |   | documentation |
+|        {d}|  +------+   |   website     |
++-----+-----+      +      |               |
+      :        +-------+  +---------------+
+      |        | cBLU  |          ^
+      |        | docsy |          |
+      |        | theme |          |
+      |        |       |          |
+      |        +++++++++          |
+      |                           |
+      |  Lots of authoring work   |
+      +---------------------------+
