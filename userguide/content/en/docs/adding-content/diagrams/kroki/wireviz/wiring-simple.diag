@@ -1,0 +1,18 @@
+connectors:
+connectors:
+  X1:
+    pincount: 2
+  X2:
+    pincount: 2
+
+cables:
+  W1:
+    wirecount: 2
+    length: 1
+    colors: [BK, BU]
+
+connections:
+  -
+    - X1: [1-2]
+    - W1: [1-2]
+    - X2: [1-2]
