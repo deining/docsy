@@ -10,45 +10,65 @@ description: >
 
 ## Overview and example diagrams
 
-The [actdiag library](https://github.com/blockdiag/actdiag) allows you do generate activity diagrams via a textual description of the activity to be depicted. Use the [documentation](http://blockdiag.com/en/actdiag/) for syntax details.
-You may find this [example diagram](http://blockdiag.com/en/actdiag/examples.html) useful, too.
+The [mermaid](https://mermaid.js.org) diagramming and charting tool lets you create diagrams and visualizations via a textual description. Mermaid provides several different diagram types, like sequence, class and state diagram, Pie or quadrant chart, mindmap, timeline and many more. Use the [documentation](https://mermaid.js.org/intro/) for syntax details.
+You may have a look at the provided [example diagrams](https://mermaid.js.org/syntax/examples.html) to see what's possible with mermaid.
 
-## Authoring your activity diagram
+{{% alert title="Note" %}}
+This page describes how to retrieve a mermaid diagram using the [kroki online diagram service](https://kroki.io). As an alternative, you can generate your [mermaid diagram natively](/docs/adding-content/diagrams/mermaid/), using docsy's built-in `mermaid` shortcode.
+{{% /alert %}}
+
+## Authoring a sequence diagram (example use case)
 
 ### Diagram source embedded in code block
 
-To embed an activity diagram in your page, use a `actdiag` code block and put the diagram source in the body of the block. An example is given below:
+To embed a sequence diagram in your page, use a `mermaid-kroki` code block and put the diagram source in the body of the block. An example is given below:
 
 ````
 ```mermaid-kroki
-graph TD
-  Start --> Need{"Hugo version >= 0.93.0"}
-  Need -- No --> Off["Set params.mermaid.enable = true"]
-  Off --> Author
-  Need -- Yes --> Author[Insert mermaid codeblock]
+sequenceDiagram
+    autonumber
+    Docsy user->>Discussion board: Ask question
+    Discussion board->>Community member: read question
+    loop Different strategies
+    Community member->>Test instance: Investigate issue raised 
+    end
+    Note right of Community member: After hours of investigation:
+    Test instance-->>Community member: Come up with solution
+    Community member-->>Discussion board: Propose solution
+    Discussion board-->>Docsy user: check proposed solution
+    Docsy user->>Discussion board: Mark question as resolved
+    Docsy user->>Docsy user: Being happy
 ```
 ````
 
-The code block above renders to this activity diagram:
+The code block above renders to this sequence diagram:
 
 ```mermaid-kroki
-graph TD
-  Start --> Need{"Hugo version >= 0.93.0"}
-  Need -- No --> Off["Set params.mermaid.enable = true"]
-  Off --> Author
-  Need -- Yes --> Author[Insert mermaid codeblock]
+sequenceDiagram
+    autonumber
+    Docsy user->>Discussion board: Ask question
+    Discussion board->>Community member: read question
+    loop Different strategies
+    Community member->>Test instance: Investigate issue raised 
+    end
+    Note right of Community member: After hours of investigation:
+    Test instance-->>Community member: Come up with solution
+    Community member-->>Discussion board: Propose solution
+    Discussion board-->>Docsy user: check proposed solution
+    Docsy user->>Discussion board: Mark question as resolved
+    Docsy user->>Docsy user: Being happy
 ```
 
 ### Reading diagram source from file
 
-For more complex activity diagrams, there is the option to read the diagram source from a file. To do so, pass the parameter `sourcefile` as attribute of the code block:
+For more complex diagrams, there is the option to read the diagram source from a file. To do so, pass the parameter `sourcefile` as attribute of the code block:
 
-
-```mermaid-kroki { sourcefile="mermaid-simple.diag" }
+````
+```mermaid-kroki { sourcefile="mermaid-sequence.diag" }
 ```
+````
 
-
-Using this [source file](mermaid-simple.diag), the same diagram as above is shown.
+Using this [source file](mermaid-sequence.diag), the same diagram as above is shown.
 
 ## Supported output formats
 
@@ -61,17 +81,15 @@ Your diagram can be customized using the options listed below:
 | Option name     | Allowable values                                  | Description                                  |
 |-----------------|---------------------------------------------------|----------------------------------------------|
 | sourcefile      | string                                            | Name of file containing diagram source code  |
-| format          | _svg_, _png_ or _pdf_                             | Output format of generated diagram image     |
+| format          | _svg_or _png_                                     | Output format of generated diagram image     |
 | disabled        | boolean,<br>_true_ or _false_                     | Disable/skip diagram                         |
-| antialias       | flag,<br>empty string ("")                        | Pass diagram image to anti-alias filter      |
-| no-transparency | flag,<br>empty string ("")                        | No transparent diagram background (PNG only) |
-| size            | dimensions,<br>_width_x_height_<br>e.g. _320x240_ | Size of diagram                              |
-| no-doctype      | flag,<br>empty string ("")                        | Omit doctype definition tags (SVG only)      |
+
+Furthermore, there a many mermaid config options, provided by mermaid. For the full ist of options, have a look at the [Mermaid source code](https://github.com/mermaid-js/mermaid/blob/master/packages/mermaid/src/config.type.ts).
 
 If you want to make use of these option(s), you have to give them as attributes to your `actdiag` code block, as shown in the listing below:
 
 ````
-```actdiag { format="svg" disabled=false antialias="" no-transparency="" size="30x30" no-doctype="" }
+```mermaid-kroki { format="svg" disabled=false theme="forest" }
 diagram source goes here
 ```
 ````
@@ -79,14 +97,9 @@ diagram source goes here
 Alternatively, when reading the diagram source from a file, the parameters can be given inside the code block, too. Use the json format for notation inside the body of your block:
 
 ````
-```actdiag { sourcefile="act-simple.diag" format="svg" disabled=false antialias="" no-transparency="" size="30x30" no-doctype="" }
+```mermaid-kroki { sourcefile="mermaid-sequence.diag" format="svg" }
 {
-  "format": "svg",
-  "disabled": "false",
-  "antialias": "",
-  "no-transparency": "",
-  "size": "30x30"
+  "theme": "forest"
 }
 ```
 ````
-

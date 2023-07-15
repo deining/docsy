@@ -1,0 +1,20 @@
+== Question ==
+"Docsy user" -> "Discussion board": Ask question
+activate "Docsy user"
+activate "Discussion board"
+"Discussion board" -> "Community member": read question
+activate "Community member"
+== Answer ==
+loop Different strategies
+"Community member" -> "Test instance": Investigate issue raised
+activate "Test instance"
+note left of "Test instance": After hours of investigation:
+end
+"Test instance" -> "Community member": Come up with solution
+deactivate "Test instance"
+"Community member" -> "Discussion board": Propose solution
+deactivate "Community member"
+"Discussion board" -> "Docsy user": check proposed solution
+deactivate "Discussion board"
+"Docsy user" -> "Discussion board": Mark question as resolved
+"Docsy user" -> "Docsy user": Being happy
