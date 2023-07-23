@@ -3,62 +3,120 @@ title: "PGF/TikZ: Drawings for LaTeX"
 linkTitle: "TikZ (drawings for LaTeX)"
 date: 2023-03-31T21:13:54+02:00
 draft: false
+math: true
 weight: 173
 description: >
   Author graphics using the TikZ frontend and the underlying [PGF](https://github.com/pgf-tikz/pgf) TeX macro package.
 ---
+## Overview and example drawings
 
-```tikz { disabled=true }
-% Author : Hugues Vermeiren
-% Replicating triangles
-\documentclass[border=10pt]{standalone}
-%%%<
-\usepackage{verbatim}
-%%%>
-\begin{comment}
-:Title: Replicating triangles
-:Tags: Coordinate calculations;Geometry;Foreach;Fun
-:Author: Hugues Vermeiren
-:Slug: triangles
+[PGF/TikZ](https://en.wikipedia.org/wiki/PGF/TikZ) allows you to author sophisticated technical diagrams using the [PGF](https://github.com/pgf-tikz/pgf) \\(\TeX\\) macro package. [TikZ](https://tikz.de) is user-friendly syntax layer around lower-level PGF macro package. See the [user manual](https://pgf-tikz.github.io) for details on how to author your diagrams. You may find the [example gallery](https://texample.net/tikz/examples/) useful, too. There is also a [demonstration](http://www.math.tugraz.at/~huss/new/teaching/computermathematik09/dateien/tikz_demonstration.pdf) available that shows many small, but several small code samples.
 
-Replicating triangles, using the 'calc' tikz library.
-\end{comment}
+## Embedding your TikZ drawing
+
+### Drawing source embedded in code block
+
+To embed a `TikZ` drawing in your page, use a `tikz` code block and put the drawing source in the body of the block. An example is given below, rendering a drawing of the [Penrose triangle](https://en.wikipedia.org/wiki/Penrose_triangle) as output:
+
+````
+```tikz
+\documentclass{standalone}
 \usepackage{tikz}
-\usetikzlibrary{calc}
-
-\newcommand{\construct}[3]{
-  \foreach \n in {1,...,\nmax} {
-    \coordinate (#3) at ($(#2)!0.5!(#3)$);
-    \coordinate (D)  at (#2);
-    \coordinate (#2) at ($(#2)!1.0!{-60}:(#3)$);
-    \coordinate (#1) at (D);
-    \fill [blue!10] (#1) -- (#2) -- (#3) -- cycle;
-    \draw (#3) -- (#2) -- (#1);
-  }
-}
-
-\newcommand{\basetriangle}{% equilateral triangle with side 1
-  \def\h{0.866025}% sqrt(3)/2
-  \coordinate (X) at (-1/2,{-1/3*\h});
-  \coordinate (Y) at (1/2,{-1/3*\h});
-  \coordinate (Z) at (0,{2/3*\h});
-  \fill[blue!10, draw=black] (X) -- (Y) -- (Z) -- cycle;
-  }
-
-\def\nmax{8}% nb. of triangles on each branch
-
-\newcommand{\Triangle}[1]{%
-  \foreach \coord/\point in {#1} {
-    \coordinate (\coord) at (\point);}
-  \construct{A}{B}{C}
-}
-
 \begin{document}
-  \begin{tikzpicture}[scale=7.0]
-    \basetriangle
-    \Triangle{A/X,B/Y,C/Z}
-    \Triangle{C/X,A/Y,B/Z}
-    \Triangle{B/X,C/Y,A/Z}
+  \begin{tikzpicture}[scale=1, line join=bevel]
+    \pgfmathsetmacro{\a}{2.5}
+    \pgfmathsetmacro{\b}{0.9}
+    \tikzset{%
+      apply style/.code     = {\tikzset{#1}},
+      triangle_edges/.style = {thick,draw=black}
+    }
+    \foreach \theta/\facestyle in {%
+        0/{triangle_edges, fill = gray!50},
+      120/{triangle_edges, fill = gray!25},
+      240/{triangle_edges, fill = gray!90}%
+    }{
+      \begin{scope}[rotate=\theta]
+        \draw[apply style/.expand once=\facestyle]
+          ({-sqrt(3)/2*\a},{-0.5*\a})                     --
+          ++(-\b,0)                                       --
+            ({0.5*\b},{\a+3*sqrt(3)/2*\b})                -- % higher point
+            ({sqrt(3)/2*\a+2.5*\b},{-.5*\a-sqrt(3)/2*\b}) -- % rightmost point
+          ++({-.5*\b},-{sqrt(3)/2*\b})                    -- % lower point
+            ({0.5*\b},{\a+sqrt(3)/2*\b})                  --
+          cycle;
+      \end{scope}
+    }
   \end{tikzpicture}
 \end{document}
 ```
+````
+
+The code block above renders to this drawing:
+
+```tikz
+% Author: Julien Cretel
+% Date:   24/02/2013
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+    \begin{tikzpicture}[scale=1, line join=bevel]
+    % \a and \b are two macros defining characteristic
+    % dimensions of the Penrose triangle.		
+    \pgfmathsetmacro{\a}{2.5}
+    \pgfmathsetmacro{\b}{0.9}
+    \tikzset{%
+      apply style/.code     = {\tikzset{#1}},
+      triangle_edges/.style = {thick,draw=black}
+    }
+    \foreach \theta/\facestyle in {%
+        0/{triangle_edges, fill = gray!50},
+      120/{triangle_edges, fill = gray!25},
+      240/{triangle_edges, fill = gray!90}%
+    }{
+      \begin{scope}[rotate=\theta]
+        \draw[apply style/.expand once=\facestyle]
+          ({-sqrt(3)/2*\a},{-0.5*\a})                     --
+          ++(-\b,0)                                       --
+            ({0.5*\b},{\a+3*sqrt(3)/2*\b})                -- % higher point	
+            ({sqrt(3)/2*\a+2.5*\b},{-.5*\a-sqrt(3)/2*\b}) -- % rightmost point
+          ++({-.5*\b},-{sqrt(3)/2*\b})                    -- % lower point
+            ({0.5*\b},{\a+sqrt(3)/2*\b})                  --
+          cycle;
+        \end{scope}diag
+    }	
+  \end{tikzpicture}
+\end{document}
+```
+
+### Reading drawing source from file
+
+For more complex TikZ drawings, there is the option to read the drawing source from a file. To do so, pass the parameter `sourcefile` as attribute of the code block:
+
+````
+```tikz { sourcefile="penrose-triangle.diag" }
+```
+````
+
+Using this [source file](penrose-triangle.diag), the same Penrose triangle as above is shown.
+
+## Supported output formats
+
+The default output format is `svg`. By using the `format` option (see below), you can opt for `png`, `jpeg` or `pdf` as output format, too. 
+
+## Drawing options
+
+Your drawing can be customized using the options listed below: 
+
+| Option name     | Allowable values                                  | Description                                 |
+|-----------------|---------------------------------------------------|---------------------------------------------|
+| sourcefile      | string                                            | Name of file containing drawing source code |
+| format          | _svg_, _png_, _jpeg_ or _pdf_                     | Output format of generated drawing          |
+| disabled        | boolean,<br>_true_ or _false_                     | Disable/skip drawing                        |
+
+If you want to make use of these option(s), you have to give them as attributes to your `tikz` code block, as shown in the listing below:
+
+````
+```tikz {format="svg" disabled=false }
+drawing source goes here
+```
+````

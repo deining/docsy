@@ -9,7 +9,7 @@ description: >
 ---
 ## Overview
 
-The `rackdiag` script from the [nwdiag library](https://github.com/blockdiag/nwdiag/tree/master/src/packetdiag) allows you do generate rack diagrams via a textual description of the rack to be depicted. Use the [documentation](http://blockdiag.com/en/nwdiag/rackdiag-examples.html) for syntax details.
+The `rackdiag` script from the [nwdiag library](https://github.com/blockdiag/nwdiag/tree/master/src/packetdiag) allows you to generate rack diagrams via a textual description of the rack to be depicted. Use the [documentation](http://blockdiag.com/en/nwdiag/rackdiag-examples.html) for syntax details.
 
 ## Authoring your rack diagram
 

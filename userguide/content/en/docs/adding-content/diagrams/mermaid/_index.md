@@ -9,6 +9,11 @@ description: >
 ---
 [Mermaid](https://mermaid-js.github.io) is a Javascript library for rendering simple text definitions to useful diagrams in the browser.  It can generate a variety of different diagram types, including flowcharts, sequence diagrams, class diagrams, state diagrams, ER diagrams, user journey diagrams, Gantt charts and pie charts.
 
+{{% alert title="Note" %}}
+This page describes how to generate your mermaid diagram natively, using docsy's built-in `mermaid` shortcode. As an [alternative](/docs/adding-content/diagrams/kroki/mermaid/), you can retrieve a mermaid diagram using the [kroki online diagram service](https://kroki.io).
+{{% /alert %}}
+
+
 With Mermaid support enabled in Docsy, you can include the text definition of a Mermaid diagram inside a code block, and it will automatically be rendered by the browser as soon as the page loads.
 
 The great advantage of this is anyone who can edit the page can now edit the diagram - no more hunting for the original tools and version to make a new edit.

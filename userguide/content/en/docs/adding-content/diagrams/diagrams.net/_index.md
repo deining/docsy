@@ -5,7 +5,7 @@ date: 2023-04-13T12:28:25+02:00
 draft: false
 weight: 40
 description: >
-  Choose among 25 different diagrams types provided by the free [Kroki](https://kroki.io) online diagram service.
+  Create and edit your diagram using the free [Diagrams.net](https://diagrams.net/) online diagram editor.
 ---
 [Diagrams.net](https://diagrams.net/) (aka `draw.io`) provides a free and open source diagram editor that can generate a wider range of diagrams than Mermaid or PlantUML using a web or desktop editor.
 

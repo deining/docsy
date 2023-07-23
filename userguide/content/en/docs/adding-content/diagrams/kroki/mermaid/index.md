@@ -72,7 +72,7 @@ Using this [source file](mermaid-sequence.diag), the same diagram as above is sh
 
 ## Supported output formats
 
-The default output format is `svg`. By using the `format` option (see below), you can opt for `png` or `pdf` as output format, too. 
+The default output format is `svg`. By using the `format` option (see below), you can opt for `png` as output format, too. 
 
 ## Diagram options
 
@@ -86,7 +86,7 @@ Your diagram can be customized using the options listed below:
 
 Furthermore, there a many mermaid config options, provided by mermaid. For the full ist of options, have a look at the [Mermaid source code](https://github.com/mermaid-js/mermaid/blob/master/packages/mermaid/src/config.type.ts).
 
-If you want to make use of these option(s), you have to give them as attributes to your `actdiag` code block, as shown in the listing below:
+If you want to make use of these option(s), you have to give them as attributes to your `mermaid-kroki` code block, as shown in the listing below:
 
 ````
 ```mermaid-kroki { format="svg" disabled=false theme="forest" }

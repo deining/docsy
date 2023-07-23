@@ -10,7 +10,7 @@ description: >
 
 ## Overview
 
-The [ditaa](https://ditaa.sourceforge.net/) command line utility allows you do generate diagrams from ASCII art. Consult the [Usage](https://ditaa.sourceforge.net/#usage) section of the `ditaa` homepage  for syntax details.
+The [ditaa](https://ditaa.sourceforge.net/) command line utility allows you to generate diagrams from ASCII art. Consult the [Usage](https://ditaa.sourceforge.net/#usage) section of the `ditaa` homepage  for syntax details.
 
 ## Authoring your ASCII art diagram
 

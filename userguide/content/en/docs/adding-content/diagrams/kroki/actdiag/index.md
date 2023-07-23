@@ -10,7 +10,7 @@ description: >
 
 ## Overview and example diagrams
 
-The [actdiag library](https://github.com/blockdiag/actdiag) allows you do generate activity diagrams via a textual description of the activity to be depicted. Use the [documentation](http://blockdiag.com/en/actdiag/) for syntax details.
+The [actdiag library](https://github.com/blockdiag/actdiag) allows you to generate activity diagrams via a textual description of the activity to be depicted. Use the [documentation](http://blockdiag.com/en/actdiag/) for syntax details.
 You may find this [example diagram](http://blockdiag.com/en/actdiag/examples.html) useful, too.
 
 ## Authoring your activity diagram

@@ -9,7 +9,7 @@ description: >
 ---
 ## Overview and example diagrams
 
-The [nwdiag library](https://github.com/blockdiag/nwdiag) allows you do generate network diagrams via a textual description of the network to be depicted. Use the [documentation](http://blockdiag.com/en/nwdiag/) for syntax details.
+The [nwdiag library](https://github.com/blockdiag/nwdiag) allows you to generate network diagrams via a textual description of the network to be depicted. Use the [documentation](http://blockdiag.com/en/nwdiag/) for syntax details.
 You may find these [example diagrams](https://github.com/blockdiag/nwdiag/tree/master/examples/nwdiag) useful, too.
 
 ## Authoring your network diagram

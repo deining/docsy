@@ -1,4 +1,12 @@
-{{ $params := dict "type" "mermaid" "context" . "diagramSource" .Inner "do_not_validate" true -}}
+{{ $options := dict -}}
+{{ with .Attributes.theme -}}
+  {{ if ne ( printf "%T" . ) "string" -}}
+    {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "theme" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "theme" . ) -}}
+{{ end -}}
+
+{{ $params := dict "type" "mermaid" "context" . "diagramSource" .Inner "do_not_validate" true "options" $options -}}
 
 {{ partial "kroki.html" $params -}}
 
