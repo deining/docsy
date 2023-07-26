@@ -74,14 +74,18 @@ The code block above renders to this packet diagram:
 
 ### Reading diagram source from file
 
-For more complex sequence diagrams, there is the option to read the diagram source from a file. To do so, pass the parameter `sourcefile` as attribute of the code block:
+For more complex packet diagrams, there is the option to read the diagram source from a file. To do so, pass the parameter `sourcefile` as attribute of the code block:
 
 ````
 ```packetdiag { sourcefile="packet-simple.diag" }
 ```
 ````
 
-Using this [source file](packet-simple.diag), the same sequence diagram as above is shown.
+Using this [source file](packet-simple.diag), the same packet diagram as above is shown.
+
+{{%alert title="Note" color="primary" %}}
+The source file needs to be a [page resource](https://gohugo.io/content-management/page-resources/) bundled to the page containing the packet diagram.
+{{%/alert%}}
 
 ## Supported output formats
 

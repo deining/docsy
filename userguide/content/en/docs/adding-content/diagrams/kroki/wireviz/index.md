@@ -75,6 +75,10 @@ For more complex wiring diagrams, there is the option to read the diagram source
 
 Using this [source file](wiring-simple.diag), the same diagram as above is shown.
 
+{{%alert title="Note" color="primary" %}}
+The source file needs to be a [page resource](https://gohugo.io/content-management/page-resources/) bundled to the page containing the wiring diagram.
+{{%/alert%}}
+
 ## Supported output formats
 
 The only  output format for wiring diagrams is `svg`.

@@ -43,6 +43,7 @@ sequenceDiagram
 
 The code block above renders to this sequence diagram:
 
+````
 ```mermaid-kroki
 sequenceDiagram
     autonumber
@@ -58,6 +59,7 @@ sequenceDiagram
     Docsy user->>Discussion board: Mark question as resolved
     Docsy user->>Docsy user: Being happy
 ```
+````
 
 ### Reading diagram source from file
 
@@ -69,6 +71,10 @@ For more complex diagrams, there is the option to read the diagram source from a
 ````
 
 Using this [source file](mermaid-sequence.diag), the same diagram as above is shown.
+
+{{%alert title="Note" color="primary" %}}
+The source file needs to be a [page resource](https://gohugo.io/content-management/page-resources/) bundled to the page containing the `mermaid` diagram.
+{{%/alert%}}
 
 ## Supported output formats
 
@@ -84,7 +90,7 @@ Your diagram can be customized using the options listed below:
 | format          | _svg_or _png_                                     | Output format of generated diagram image     |
 | disabled        | boolean,<br>_true_ or _false_                     | Disable/skip diagram                         |
 
-Furthermore, there a many mermaid config options, provided by mermaid. For the full ist of options, have a look at the [Mermaid source code](https://github.com/mermaid-js/mermaid/blob/master/packages/mermaid/src/config.type.ts).
+Furthermore, mermaid provides many more config options. For the full ist of options, have a look at the [Mermaid source code](https://github.com/mermaid-js/mermaid/blob/master/packages/mermaid/src/config.type.ts).
 
 If you want to make use of these option(s), you have to give them as attributes to your `mermaid-kroki` code block, as shown in the listing below:
 

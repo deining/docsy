@@ -26,6 +26,8 @@
   {{ $attrs = .context.Attributes -}}
 {{ end -}}
 
+{{- $position := .context.Position }}
+
 {{ $diagram_source := "" -}}
 
 {{- with $attrs.sourcefile -}}
@@ -35,13 +37,11 @@
       {{ $diagramOptions = merge $diagramOptions ( unmarshal . ) -}}
     {{- end }}
   {{- else -}}
-    {{- errorf "Shortcode %q: unable to find diagram source file %q. See %s" $.type . $.Position -}}
+    {{- errorf "Shortcode %q: unable to find diagram source file %q. See %s" $.type . $position -}}
   {{- end -}}
 {{- else -}}
   {{ $diagram_source = strings.Trim $.context.Inner "\r\n" -}}
 {{- end -}}
-          
-{{- $position := .context.Position }}
 
 {{- $url := "https://kroki.io/" }}
 {{- with .context.Page.Site.Params.kroki.kroki_server }}

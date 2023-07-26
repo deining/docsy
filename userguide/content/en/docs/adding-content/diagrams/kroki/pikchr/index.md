@@ -90,6 +90,10 @@ For more complex Pikchr diagrams, there is the option to read the diagram source
 
 Using this [source file](impossible-trident.diag), the same impossible trident as above is shown.
 
+{{%alert title="Note" color="primary" %}}
+The source file needs to be a [page resource](https://gohugo.io/content-management/page-resources/) bundled to the page containing the Pikchr diagram.
+{{%/alert%}}
+
 ## Supported output formats
 
 The only supported output format is `svg`.

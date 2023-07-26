@@ -69,6 +69,10 @@ For more complex ASCII art diagrams, there is the option to read the diagram sou
 
 Using this [source file](ditaa-simple.diag), the same diagram as above is shown.
 
+{{%alert title="Note" color="primary" %}}
+The source file needs to be a [page resource](https://gohugo.io/content-management/page-resources/) bundled to the page containing the ASCII art diagram.
+{{%/alert%}}
+
 ## Supported output formats
 
 The default output format is `svg`. By using the `format` option (see below), you can opt for `png` or `pdf` as output format, too. 

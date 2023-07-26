@@ -10,11 +10,11 @@ description: >
 
 ## Overview and example diagrams
 
-The [mermaid](https://mermaid.js.org) diagramming and charting tool lets you create diagrams and visualizations via a textual description. Mermaid provides several different diagram types, like sequence, class and state diagram, Pie or quadrant chart, mindmap, timeline and many more. Use the [documentation](https://mermaid.js.org/intro/) for syntax details.
-You may have a look at the provided [example diagrams](https://mermaid.js.org/syntax/examples.html) to see what's possible with mermaid.
+The [PlantUML](https://plantuml.com) diagramming tool lets you create diagrams and visualizations via a textual description. PlantUML provides several different diagram types, like sequence, usecase, class, object, activity, component, deployment, state and timing diagrams. Use the [documentation](https://plantuml.com/en/guide) for syntax details.
+You may have a look at the provided [example diagrams](https://real-world-plantuml.com/) to see what's possible with PlantUML.
 
 {{% alert title="Note" %}}
-This page describes how to retrieve a mermaid diagram using the [kroki online diagram service](https://kroki.io). As an alternative, you can generate your [mermaid diagram natively](/docs/adding-content/diagrams/mermaid/), using docsy's built-in `mermaid` shortcode.
+This page describes how to retrieve a PlantUML diagram using the [kroki online diagram service](https://kroki.io). As an alternative, you can generate your [plantuml diagram natively]({{< relref "/docs/adding-content/diagrams/plantuml/" >}}), using docsy's built-in `plantuml` shortcode.
 {{% /alert %}}
 
 ## Authoring a sequence diagram (example use case)
@@ -88,6 +88,10 @@ For more complex diagrams, there is the option to read the diagram source from a
 
 Using this [source file](plantuml-sequence.diag), the same diagram as above is shown.
 
+{{%alert title="Note" color="primary" %}}
+The source file needs to be a [page resource](https://gohugo.io/content-management/page-resources/) bundled to the page containing the PlantUML diagram.
+{{%/alert%}}
+
 ## Supported output formats
 
 The default output format is `svg`. By using the `format` option (see below), you can opt for `png`, `jpg`, `base64` or `pdf` as output format, too. 
@@ -101,62 +105,22 @@ Your diagram can be customized using the options listed below:
 | sourcefile      | string                                            | Name of file containing diagram source code  |
 | format          | _svg_, _png_, _jpg_, _txt_ or _base64_            | Output format of generated diagram image     |
 | disabled        | boolean,<br>_true_ or _false_                     | Disable/skip diagram                         |
-
-Furthermore, there a many mermaid config options, provided by mermaid. For the full ist of options, have a look at the [Mermaid source code](https://github.com/mermaid-js/mermaid/blob/master/packages/mermaid/src/config.type.ts).
+| theme           | string or number:<br>- _amiga_<br>- _black-knight_<br>- _bluegray <br>- _blueprint_<br>- _cerulean-outline_<br>- _cerulean_<br>- _crt-amber_<br>- _crt-green_<br>- _cyborg-outline_<br>- _cyborg_ (101)<br>- _hacker_<br>- _hacker-hold_<br>- _lightgray_<br>- _materia-outline_<br>- _materia_<br>- _metal_<br>- _mimeograph_ <br>- _minty_<br>- _plain_<br>- _resume-light <br>- _sandstone_<br>- _silver_<br>- _sketchy-outline_<br>- _sketchy_<br>- _spacelab_<br>- _superhero-outline_<br>- _superhero_ (101)<br>- _united_ |   |
 
 If you want to make use of these option(s), you have to give them as attributes to your `actdiag` code block, as shown in the listing below:
 
 ````
-```plantuml-kroki { format="svg" disabled=false theme="forest" }
+```plantuml-kroki { format="svg" disabled=false theme="superhero" }
 diagram source goes here
 ```
 ````
 
 Alternatively, when reading the diagram source from a file, the parameters can be given inside the code block, too. Use the json format for notation inside the body of your block:
 
-
+````
 ```plantuml-kroki { sourcefile="plantuml-sequence.diag" format="svg" }
 {
   "theme" : "superhero"
 }
 ```
-
-## Base 64 image
-
-```plantuml-kroki { format="base64" }
-participant participant as Foo
-actor       actor       as Foo1
-boundary    boundary    as Foo2
-control     control     as Foo3
-entity      entity      as Foo4
-database    database    as Foo5
-collections collections as Foo6
-queue       queue       as Foo7
-Foo -> Foo1 : To actor
-Foo -> Foo2 : To boundary
-Foo -> Foo3 : To control
-Foo -> Foo4 : To entity
-Foo -> Foo5 : To database
-Foo -> Foo6 : To collections
-Foo -> Foo7: To queue
-```
-
-## SVG image
-
-```plantuml-kroki { format="svg" }
-participant participant as Foo
-actor       actor       as Foo1
-boundary    boundary    as Foo2
-control     control     as Foo3
-entity      entity      as Foo4
-database    database    as Foo5
-collections collections as Foo6
-queue       queue       as Foo7
-Foo -> Foo1 : To actor
-Foo -> Foo2 : To boundary
-Foo -> Foo3 : To control
-Foo -> Foo4 : To entity
-Foo -> Foo5 : To database
-Foo -> Foo6 : To collections
-Foo -> Foo7: To queue
-```
+````

@@ -75,6 +75,10 @@ Using this [source file](nw-simple.diag), the same sequence diagram as above is 
 
 The default output format is `svg`. By using the `format` option (see below), you can opt for `png` or `pdf` as output format, too. 
 
+{{%alert title="Note" color="primary" %}}
+The source file needs to be a [page resource](https://gohugo.io/content-management/page-resources/) bundled to the page containing the network diagram.
+{{%/alert%}}
+
 ## Diagram options
 
 Your diagram can be customized using the options listed below: 
