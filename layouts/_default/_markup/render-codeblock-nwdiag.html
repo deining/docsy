@@ -31,3 +31,4 @@
 {{ $params := merge $params ( dict "type" "nwdiag" "context" . "options" $options "diagramSource" .Inner) -}}
 
 {{ partial "kroki.html" $params -}}
+
