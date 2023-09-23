@@ -1,3 +1,47 @@
-{{ $params := dict "type" "symbolator" "context" . "diagramSource" .Inner -}}
+{{ $options := dict -}}
+{{ with .Attributes.component -}}
+  {{ if ne ( printf "%T" . ) "string" -}}
+    {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "component" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "component" . ) -}}
+{{ end -}}
+
+{{ with .Attributes.title -}}
+  {{ if ne ( printf "%T" . ) "string" -}}
+    {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "title" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "title" . ) -}}
+{{ end -}}
+
+{{ with .Attributes.scale -}}
+  {{ if ne ( printf "%T" . ) "float64" -}}
+    {{ errorf "Code block %q: numerical value expected for attribute %q, but got %s. Error position: %s" $.Type "scale" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "scale" . ) -}}
+{{ end -}}
+
+{{ with index .Attributes "library-name" -}}
+  {{ if ne ( printf "%T" . ) "string" -}}
+    {{ errorf "Code block %q: string value expected for attribute %q, but got %s. Error position: %s" $.Type "library-name" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "library-name" . ) -}}
+{{ end -}}
+
+{{ with .Attributes.transparent -}}
+  {{ if ne ( printf "%T" . ) "bool" -}}
+    {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "transparent" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "transparent" . ) -}}
+{{ end -}}
+
+{{ with index .Attributes "no-type" -}}
+  {{ if ne ( printf "%T" . ) "bool" -}}
+    {{ errorf "Code block %q: boolean value expected for attribute %q, but got %s. Error position: %s" $.Type "no-type" (printf "%T" .) $.Position  -}}
+  {{ end -}}
+  {{ $options = merge $options ( dict "no-type" . ) -}}
+{{ end -}}
+
+{{ $params := dict "validAttributes" ( slice "component" "transparent" "title" "scale" "no-type" "library-name" ) -}}
+{{ $params := merge $params ( dict "type" "symbolator" "context" . "options" $options ) -}}
 
 {{ partial "kroki.html" $params -}}

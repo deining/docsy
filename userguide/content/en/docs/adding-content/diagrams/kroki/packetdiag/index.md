@@ -16,7 +16,7 @@ You may find this [example diagram](https://github.com/blockdiag/nwdiag/tree/mas
 
 ### Diagram source embedded in code block
 
-To embed a packet diagram in your page, use a `packetdiag` code block and put the diagram source in the body of the block. The example below shows the structure of an TCP/IP packet: 
+To embed a packet diagram in your page, use a `packetdiag` code block and put the diagram source in the body of the block. The example below shows the structure of an TCP/IP packet:
 
 ````
 ```packetdiag
@@ -89,11 +89,11 @@ The source file needs to be a [page resource](https://gohugo.io/content-manageme
 
 ## Supported output formats
 
-The default output format is `svg`. By using the `format` option (see below), you can opt for `png` or `pdf` as output format, too. 
+The default output format is `svg`. By using the `format` option (see below), you can opt for `png` or `pdf` as output format, too.
 
 ## Diagram options
 
-Your diagram can be customized using the options listed below: 
+Your diagram can be customized using the options listed below:
 
 | Option name     | Allowable values                                  | Description                                  |
 |-----------------|---------------------------------------------------|----------------------------------------------|

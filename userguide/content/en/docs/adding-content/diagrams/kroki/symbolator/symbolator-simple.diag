@@ -1,0 +1,18 @@
+component sectioned is
+  port (
+    --# {{clocks|Clocking}}
+    Clock : in std_ulogic;
+
+    --# {{control|Control signals}}
+    Enable: in std_ulogic;
+
+    --# {{data|Data port}}
+    Data1 : in std_ulogic;
+
+    --# {{Additional port1}}
+    Data2 : out std_ulogic;
+
+    --# {{}}
+    Data3 : inout std_ulogic
+  );
+end component;
