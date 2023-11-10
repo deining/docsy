@@ -44,8 +44,18 @@ module:
       target: static/webfonts
     # Mounts for module installations,
     # needed to work around a known bug in Go’s module management.
-    # - source: assets/vendor/bootstrap/scss/_vendor
-    #  target: assets/vendor/bootstrap/scss/vendor
+    - source: assets/vendor/
+      target: assets/vendor/
+    - source: assets/vendor/bootstrap/
+      target: assets/vendor/bootstrap/
+    - source: assets/vendor/bootstrap/scss/
+      target: assets/vendor/bootstrap/scss/
+    - source: assets/vendor/bootstrap/scss/vendor
+      target: assets/vendor/bootstrap/scss/vendor
+    - source: assets/vendor/bootstrap/scss/vendor
+      target: assets/vendor/bootstrap/scss/vendor
+    - source: assets/vendor/bootstrap/scss/_vendor
+      target: assets/vendor/bootstrap/scss/_vendor
   imports:
     - path: github.com/twbs/bootstrap
       disable: false
