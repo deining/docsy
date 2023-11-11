@@ -1,4 +1,4 @@
-{{- /* This partial is based on this markdown render hook (which was reworked and modified): 
+{{- /* This partial is based on this markdown render hook (which was reworked and modified):
      https://github.com/jmooring/hugo-testing/blob/hugo-forum-topic-36924/layouts/_default/_markup/render-codeblock-kroki.html
      Credits go to Joe Mooring for his work. */}}
 
@@ -10,7 +10,7 @@
     {{ $codeBlock = . -}}
   {{ end -}}
 {{ end -}}
-     
+
 {{- $diagramOptions := dict }}
 
 {{ with .options }}
@@ -18,7 +18,7 @@
     {{ $diagramOptions = merge $diagramOptions ( dict $key $value ) -}}
   {{ end -}}
 {{ end -}}
-     
+
 {{ $attrs := dict -}}
 {{ if .isShortcode -}}
   {{ $attrs = .parameters -}}
