@@ -24,8 +24,18 @@ module:
       target: assets
     - source: node_modules/bootstrap
       target: assets/vendor/bootstrap
+    - source: node_modules/bootstrap/scss
+      target: assets/_vendor/bootstrap/scss
+    - source: node_modules/bootstrap/scss/vendor
+      target: assets/_vendor/bootstrap/scss/vendor
+    - source: node_modules/bootstrap
+      target: assets/_vendor/bootstrap
+    - source: node_modules/bootstrap/scss
+      target: assets/_vendor/bootstrap/scss
+    - source: node_modules/bootstrap/scss/vendor
+      target: assets/_vendor/bootstrap/scss/vendor
     - source: node_modules/@fortawesome/fontawesome-free
-      target: assets/vendor/Font-Awesome
+      target: assets/_vendor/Font-Awesome
     - source: i18n
       target: i18n
     - source: layouts
@@ -37,7 +47,11 @@ module:
     # Mounts for projects using Docsy as an NPM package. The source path prefix
     # "../.." moves out of themes/docsy so that Docsy can find its dependencies.
     - source: ../../node_modules/bootstrap
-      target: assets/vendor/bootstrap
+      target: assets/_vendor/bootstrap
+    - source: ../../node_modules/bootstrap/scss
+      target: assets/_vendor/bootstrap/scss
+    - source: ../../node_modules/bootstrap/scss/vendor
+      target: assets/_vendor/bootstrap/scss/vendor
     - source: ../../node_modules/@fortawesome/fontawesome-free
       target: assets/vendor/Font-Awesome
     - source: ../../node_modules/@fortawesome/fontawesome-free/webfonts
