@@ -1,7 +1,7 @@
 # Runs `npm test` to build Docsy & the User Guide and run all repo checks across
 # OSs.
 
-name: test
+name: Smoke test Windows, build site
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [windows-latest]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

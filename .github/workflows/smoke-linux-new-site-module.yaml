@@ -1,7 +1,7 @@
 # Smoke test across OSs: build a Docsy-based site from scratch, fetching Docsy
 # via NPM.
 
-name: smoke
+name: Smoke test Linux, new site, hugo module
 
 on:
   push:
@@ -16,8 +16,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
-        docsy-src: [NPM, HUGO_MODULE]
+        os: [ubuntu-latest]
+        docsy-src: [HUGO_MODULE]
     env:
       BASE_REPO: ${{ github.repository }}
       BRANCH: ${{ github.head_ref }}
