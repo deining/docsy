@@ -40,6 +40,18 @@ markup:
     parser:
       attribute:
         block: true
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+          inline:
+          - - \(
+            - \)
     renderer:
       unsafe: true
   highlight:
@@ -121,6 +133,10 @@ params:
     enable: true
   drawio:
     enable: true
+  katex:
+    enable: false
+    mhchem:
+      enable: false
 
 taxonomies:
   tag: tags
