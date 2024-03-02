@@ -334,38 +334,3 @@ params:
 }
 {{< /tab >}}
 {{< /tabpane >}}
-For example, the following defines a sequence diagram:
-sequenceDiagram
-    autonumber
-    Docsy user->>Discussion board: Ask question
-    Discussion board->>Community member: read question
-    loop Different strategies
-    Community member->>Test instance: Investigate issue raised
-    end
-    Note right of Community member: After hours of investigation:
-    Test instance-->>Community member: Come up with solution
-    Community member-->>Discussion board: Propose solution
-    Discussion board-->>Docsy user: check proposed solution
-    Docsy user->>Discussion board: Mark question as resolved
-    Docsy user->>Docsy user: Being happy
-which is automatically rendered to:
-sequenceDiagram
-    autonumber
-    Docsy user->>Discussion board: Ask question
-    Discussion board->>Community member: read question
-    loop Different strategies
-    Community member->>Test instance: Investigate issue raised
-    end
-    Note right of Community member: After hours of investigation:
-    Test instance-->>Community member: Come up with solution
-    Community member-->>Discussion board: Propose solution
-    Discussion board-->>Docsy user: check proposed solution
-    Docsy user->>Discussion board: Mark question as resolved
-    Docsy user->>Docsy user: Being happy
-Support of Mermaid diagrams is automatically enabled as soon as you use a `mermaid` code block on your page.
-By default, docsy pulls in the latest officially released version of Mermaid at build time. If that doesn't fit your needs, you can specify the wanted mermaid version inside your configuration file `hugo.toml`/`hugo.yaml`/`hugo.json`:
-{{< tab header="Configuration file:" disabled=true />}}
-version = "10.8.0"
-    version: 10.8.0
-      "version": "10.8.0"
-Settings can also be overridden on a per-diagram basis by making use of a [frontmatter config](http://mermaid.js.org/config/theming.html#customizing-themes-with-themevariables) block at the start of the diagram definition.

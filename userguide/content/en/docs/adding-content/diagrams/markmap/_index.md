@@ -36,7 +36,7 @@ For example, the following defines a simple MindMap:
     ```js
     console.log('code block');
     ```
-- Katex - $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$
+- KaTex - $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$
 ```
 ````
 
@@ -66,7 +66,7 @@ Automatically renders to:
     ```js
     console.log('code block');
     ```
-- Katex - $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$
+- KaTex - $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$
 ```
 
 To enable/disable MarkMap, update `hugo.toml`/`hugo.yaml`/`hugo.json`:
