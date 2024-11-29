@@ -11,3 +11,21 @@ HUGO_THEME = "repo"
 
 [context.production]
 command = "npm run docs-install && npm run build:production"
+
+#[context.deploy-preview]
+#command = "npm install -D autoprefixer && npm install -D postcss-cli && cd userguide && hugo --minify --themesDir ../../ --baseURL $DEPLOY_PRIME_URL"
+#[[context.deploy-preview.plugins]]
+#package = "netlify-plugin-checklinks"
+
+#  [context.deploy-preview.plugins.inputs]
+#  skipPatterns = [ "/_print" ]
+#  followSourceMaps = false
+#  checkExternal = false
+
+[[plugins]]
+package = "netlify-plugin-checklinks"
+
+  [plugins.inputs]
+  skipPatterns = [ "/_print" ]
+  followSourceMaps = false
+  checkExternal = false
