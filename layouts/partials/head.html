@@ -52,10 +52,22 @@
 {{ define "algolia/head" -}}
 
 {{ if and .Site.Params.search (isset .Site.Params.search "algolia") -}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3.8.2"
-  integrity="sha512-l7pkV1dOURFyHCeH8I4fK9lCkQKuqhlsTCqRl3zktifDlB8oTUJ+mJPgYkK9kHpUut8j1iPquTv32t6hvTPv3g=="
-  crossorigin="anonymous" />
-{{ end -}}
+  {{ $version := .Site.Params.search.algolia.version | default "latest" -}}
+  {{ $cdnurl := printf "https://cdn.jsdelivr.net/npm/@docsearch/css@%s" $version -}}
+  {{ with try (resources.GetRemote $cdnurl) -}}
+    {{ with .Err -}}
+      {{ errorf "Could not retrieve algolia docsearch css file from CDN. Reason: %s." . -}}
+    {{ else with.Value -}}
+      {{ with resources.Copy "css/algolia.css" . }}
+        {{ $secureCSS := . | resources.Fingerprint "sha512" -}}
+<link rel="stylesheet" href="{{- .RelPermalink -}}" integrity="{{- $secureCSS.Data.Integrity -}}" crossorigin="anonymous" />
+      {{ end -}}
+    {{ end -}}
+  {{ else -}}
+    {{ errorf "Invalid Algolia docsearch version %s, could not retrieve this version from CDN." $version -}}
+  {{ end -}}
+<meta name="docsearch:language" content="{{ .Language.Lang }}">  
+{{- end -}}
 
 {{ if ne .Site.Params.algolia_docsearch nil -}}
 {{ warnf `Config 'params.algolia_docsearch' is deprecated: use 'params.search.algolia'

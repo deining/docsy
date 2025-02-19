@@ -124,6 +124,11 @@ taxonomies:
   tag: tags
   category: categories
 
+security:
+  http:
+    #mediaTypes: ['^application/javascript$', '^text/javascript$']
+    mediaTypes: ['^application/javascript']
+
 module:
   mounts:
     - source: content/en

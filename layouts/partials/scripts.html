@@ -104,9 +104,20 @@ window.markmap = {
 {{ partial "hooks/body-end.html" . -}}
 
 {{ define "algolia/scripts" -}}
-<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.2"
-  integrity="sha512-lsD+XVzdBI6ZquXc8gqbw0/bgrfIsMJwY/8xvmvbN+U3gZSeG7BXQoCq4zv/yCmntR2GLHtgB+bD4ESPsKIbIA=="
-  crossorigin="anonymous" ></script>
+  {{ $version := .Site.Params.search.algolia.version | default "latest" -}}
+  {{ $cdnurl := printf "https://cdn.jsdelivr.net/npm/@docsearch/js@%s" $version -}}
+  {{ with try (resources.GetRemote $cdnurl) -}}
+    {{ with .Err -}}
+      {{ errorf "Could not retrieve algolia docsearch script file from CDN. Reason: %s." . -}}
+    {{ else with.Value -}}
+      {{ with resources.Copy "js/algolia.js" . }}
+        {{ $secureJS := . | resources.Fingerprint "sha512" -}}
+<script src="{{- .RelPermalink -}}" integrity="{{- $secureJS.Data.Integrity -}}" crossorigin="anonymous" ></script>
+      {{ end -}}
+    {{ end -}}
+  {{ else -}}
+    {{ errorf "Invalid Algolia docsearch version %s, could not retrieve this version from CDN." $version -}}
+  {{ end -}}
 <script type="text/javascript">
 const containers = ['#docsearch-0', '#docsearch-1'];
 for (let c of containers) {
@@ -115,6 +126,9 @@ for (let c of containers) {
     appId: {{ .appId | default "R2IYF7ETH7" }},
     apiKey: {{ .apiKey | default "599cec31baffa4868cae4e79f180729b" }},
     indexName: {{ .indexName | default "docsearch" }},
+    searchParameters: {
+      facetFilters: ['language:{{ .Language.Lang }}']
+    },
   });
 }
 </script>
