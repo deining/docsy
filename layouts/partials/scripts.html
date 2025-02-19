@@ -98,7 +98,7 @@ window.markmap = {
 {{ end -}}
 
 {{ if and .Site.Params.search (isset .Site.Params.search "algolia") -}}
-  {{ template "algolia/scripts" .Site.Params.search.algolia -}}
+  {{ template "algolia/scripts" . -}}
 {{ end -}}
 <script src='{{ "js/tabpane-persist.js" | relURL }}'></script>
 {{ partial "hooks/body-end.html" . -}}
@@ -110,24 +110,26 @@ window.markmap = {
     {{ with .Err -}}
       {{ errorf "Could not retrieve algolia docsearch script file from CDN. Reason: %s." . -}}
     {{ else with.Value -}}
-      {{ with resources.Copy "js/algolia.js" . }}
+      {{ with resources.Copy "js/algolia.js" . -}}
         {{ $secureJS := . | resources.Fingerprint "sha512" -}}
 <script src="{{- .RelPermalink -}}" integrity="{{- $secureJS.Data.Integrity -}}" crossorigin="anonymous" ></script>
-      {{ end -}}
+      {{- end -}}
     {{ end -}}
   {{ else -}}
     {{ errorf "Invalid Algolia docsearch version %s, could not retrieve this version from CDN." $version -}}
-  {{ end -}}
+  {{- end }}
 <script type="text/javascript">
 const containers = ['#docsearch-0', '#docsearch-1'];
 for (let c of containers) {
   docsearch({
     container: c,
+{{- with .Site.Params.search.algolia }}
     appId: {{ .appId | default "R2IYF7ETH7" }},
     apiKey: {{ .apiKey | default "599cec31baffa4868cae4e79f180729b" }},
     indexName: {{ .indexName | default "docsearch" }},
+{{- end }}
     searchParameters: {
-      facetFilters: ['language:{{ .Language.Lang }}']
+      facetFilters: ["language:{{- .Language.Lang -}}"],
     },
   });
 }
