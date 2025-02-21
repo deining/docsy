@@ -88,3 +88,74 @@ other = "Was this page helpful?"
 other = "Yes"
 [feedback_negative]
 other = "No"
+
+# Algolia
+
+# button
+[buttonText]
+other = "Search"
+[buttonAriaLabel]
+other = "Search"
+
+# modal
+# searchBox
+[resetButtonTitle]
+other = "Clear the query"
+[resetButtonAriaLabel]
+other = "Clear the query"
+[cancelButtonText]
+other = "Cancel"
+[cancelButtonAriaLabel]
+other = "Cancel"
+[searchInputLabel]
+other = "Search"
+
+# startScreen
+[placeHolder]
+other = "Search docs"
+[recentSearchesTitle]
+other = "Recent"
+[noRecentSearchesText]
+other = "No recent searches"
+[saveRecentSearchButtonTitle]
+other = "Save this search"
+[removeRecentSearchButtonTitle]
+other = "Remove this search from history"
+[favoriteSearchesTitle]
+other = "Favorite"
+[removeFavoriteSearchButtonTitle]
+other = "Remove this search from favorites"
+
+# errorScreen
+[titleText]
+other = "Unable to fetch results"
+[helpText]
+other = "You might want to check your network connection."
+
+# footer
+[selectText]
+other = "to select"
+[selectKeyAriaLabel]
+other = "Enter key"
+[navigateText]
+other = "to navigate"
+[navigateUpKeyAriaLabel]
+other = "Arrow up"
+[navigateDownKeyAriaLabel]
+other = "Arrow down"
+[closeText]
+other = "to close"
+[closeKeyAriaLabel]
+other = "Escape key"
+[searchByText]
+other = "Search by"
+
+# noResultsScreen
+[noResultsText]
+other = "No results for"
+[suggestedQueryText]
+other = "Try searching for"
+[reportMissingResultsText]
+other = "Believe this query should return results?"
+[reportMissingResultsLinkText]
+other = "Let us know."

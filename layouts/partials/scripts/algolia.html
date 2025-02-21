@@ -1,0 +1,78 @@
+{{ $version := .Site.Params.search.algolia.version | default "latest" -}}
+{{ $cdnurl := printf "https://cdn.jsdelivr.net/npm/@docsearch/js@%s" $version -}}
+{{ with try (resources.GetRemote $cdnurl) -}}
+  {{ with .Err -}}
+    {{ errorf "Could not retrieve algolia docsearch script file from CDN. Reason: %s." . -}}
+  {{ else with.Value -}}
+    {{ with resources.Copy "js/algolia.js" . -}}
+      {{ $secureJS := . | resources.Fingerprint "sha512" -}}
+<script src="{{- .RelPermalink -}}" integrity="{{- $secureJS.Data.Integrity -}}" crossorigin="anonymous" ></script>
+    {{- end -}}
+  {{ end -}}
+{{ else -}}
+  {{ errorf "Invalid Algolia docsearch version %s, could not retrieve this version from CDN." $version -}}
+{{- end }}
+
+<script type="text/javascript">
+const containers = ["#docsearch-0", "#docsearch-1"];
+const translationsde = {
+  button: {
+    buttonText: "{{ T "buttonText" }}",
+    buttonAriaLabel: "{{ T "buttonAriaLabel" }}",
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: "{{ T "resetButtonTitle" }}",
+      resetButtonAriaLabel: "{{ T "resetButtonAriaLabel" }}",
+      cancelButtonText: "{{ T "cancelButtonText" }}",
+      cancelButtonAriaLabel: "{{ T "cancelButtonAriaLabel" }}",
+      searchInputLabel: "{{ T "searchInputLabel" }}",
+    },
+    startScreen: {
+      placeHolder: "{{ T "placeHolder" }}",      
+      recentSearchesTitle: "{{ T "recentSearchesTitle" }}",
+      noRecentSearchesText: "{{ T "noRecentSearchesText" }}",
+      saveRecentSearchButtonTitle: "{{ T "saveRecentSearchButtonTitle" }}",
+      removeRecentSearchButtonTitle: "{{ T "removeRecentSearchButtonTitle" }}",
+      favoriteSearchesTitle: "{{ T "favoriteSearchesTitle" }}",
+      removeFavoriteSearchButtonTitle: "{{ T "removeFavoriteSearchButtonTitle" }}",
+    },
+    errorScreen: {
+      titleText: "{{ T "titleText" }}",
+      helpText: "{{ T "helpText" }}",
+    },
+    footer: {
+      selectText: "{{ T "selectText" }}",
+      selectKeyAriaLabel: "{{ T "selectKeyAriaLabel" }}",
+      navigateText: "{{ T "navigateText" }}",
+      navigateUpKeyAriaLabel: "{{ T "navigateUpKeyAriaLabel" }}",
+      navigateDownKeyAriaLabel: "{{ T "navigateDownKeyAriaLabel" }}",
+      closeText: "{{ T "closeText" }}",
+      closeKeyAriaLabel: "{{ T "closeKeyAriaLabel" }}",
+      searchByText: "{{ T "searchByText" }}",
+    },
+    noResultsScreen: {
+      noResultsText: "{{ T "noResultsText" }}",
+      suggestedQueryText: "{{ T "suggestedQueryText" }}",
+      reportMissingResultsText: "{{ T "reportMissingResultsText" }}",
+      reportMissingResultsLinkText: "{{ T "" }}",
+      reportMissingResultsLinkText: "{{ T "" }}",
+    },
+  },
+};
+for (let c of containers) {
+  docsearch({
+    container: c,
+{{- with .Site.Params.search.algolia }}
+    appId: {{ .appId | default "R2IYF7ETH7" }},
+    apiKey: {{ .apiKey | default "599cec31baffa4868cae4e79f180729b" }},
+    indexName: {{ .indexName | default "docsearch" }},
+{{- end }}
+    placeholder: {{ T "placeHolder"}},
+    searchParameters: {
+      facetFilters: ["language:{{- .Language.Lang -}}"],
+    },
+    translations: translationsde,
+  });
+}
+</script>

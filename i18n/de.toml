@@ -89,3 +89,74 @@ other = "War diese Seite hilfreich?"
 other = "Ja"
 [feedback_negative]
 other = "Nein"
+
+# Algolia
+
+# button
+[buttonText]
+other = "Suche"
+[buttonAriaLabel]
+other = "Suche"
+
+# modal
+# searchBox
+[resetButtonTitle]
+other = "Suche löschen"
+[resetButtonAriaLabel]
+other = "Suche löschen"
+[cancelButtonText]
+other = "Abbrechen"
+[cancelButtonAriaLabel]
+other = "Abbrechen"
+[searchInputLabel]
+other = "Suchen"
+
+# startScreen
+[placeHolder]
+other = "Suchbegriff"
+[recentSearchesTitle]
+other = "Neueste"
+[noRecentSearchesText]
+other = "Keine neuesten Suchen"
+[saveRecentSearchButtonTitle]
+other = "Suche speichern"
+[removeRecentSearchButtonTitle]
+other = "Suche aus der Historie löschen"
+[favoriteSearchesTitle]
+other = "Favorit"
+[removeFavoriteSearchButtonTitle]
+other = "Diese Suche aus den Favoriten löschen"
+
+# errorScreen
+[titleText]
+other = "Keine Ergebnisse gefunden"
+[helpText]
+other = "Überprüfen Sie ihre Internetverbindung."
+
+# footer
+[selectText]
+other = "Auswahl"
+[selectKeyAriaLabel]
+other = "Enter Taste"
+[navigateText]
+other = "Navigation"
+[navigateUpKeyAriaLabel]
+other = "Pfeil hoch"
+[navigateDownKeyAriaLabel]
+other = "Pfeil runter"
+[closeText]
+other = "Schließen"
+[closeKeyAriaLabel]
+other = "Escape Taste"
+[searchByText]
+other = "Ermöglicht durch"
+
+# noResultsScreen
+[noResultsText]
+other = "Keine Ergebnisse für"
+[suggestedQueryText]
+other = "Suchen Sie stattdessen nach"
+[reportMissingResultsText]
+other = "Hätte diese Suche Resultate erzielen sollen?"
+[reportMissingResultsLinkText]
+other = "Lassen Sie es uns wissen."
