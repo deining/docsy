@@ -63,19 +63,19 @@ other = "Bütün bölümü yazıdırın"
 
 # Community
 [community_join]
-other = "{{ .Site.Title }} topluluğuna katılın"
+other = "{{ site.Title }} topluluğuna katılın"
 [community_introduce]
-other = "{{ .Site.Title }} topluluktaki herkesin kullanabileceği, geliştirebileceği ve keyfini çıkarabileceği açık kaynaklı bir projedir. Bize katılmanızı çok isteriz! İşte neler olduğunu öğrenmenin ve dahil olmanın birkaç yolu."
+other = "{{ site.Title }} topluluktaki herkesin kullanabileceği, geliştirebileceği ve keyfini çıkarabileceği açık kaynaklı bir projedir. Bize katılmanızı çok isteriz! İşte neler olduğunu öğrenmenin ve dahil olmanın birkaç yolu."
 [community_learn]
 other = "Öğrenin ve Bağlanın"
 [community_using]
-other = "{{ .Site.Title }} kullanıyor veya kullanmak mı istiyorsunuz? Daha fazlasını burada bulabilirsiniz:"
+other = "{{ site.Title }} kullanıyor veya kullanmak mı istiyorsunuz? Daha fazlasını burada bulabilirsiniz:"
 [community_develop]
 other = "Geliştirin ve Katkıda Bulunun"
 [community_contribute]
-other = "If you want to get more involved by contributing to {{ .Site.Title }}, join us here:"
+other = "If you want to get more involved by contributing to {{ site.Title }}, join us here:"
 [community_how_to]
-other = "You can find out how to contribute to {{ .Site.Title }} in our"
+other = "You can find out how to contribute to {{ site.Title }} in our"
 [community_guideline]
 other = "Katkı Yönergeleri"
 

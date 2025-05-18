@@ -173,7 +173,7 @@ docs section:
 
 ```go-html-template
 {{ $context := . }}
-{{ range $taxo, $taxo_map := .Site.Taxonomies }}
+{{ range $taxo, $taxo_map := site.Taxonomies }}
   {{ partial "taxonomy_terms_article.html" (dict "context" $context "taxo" $taxo ) }}
 {{ end }}
 ```
@@ -247,7 +247,7 @@ taxonomies and its terms:
 
 ```go-html-template
 {{ $context := . }}
-{{ range $taxo, $taxo_map := .Site.Taxonomies }}
+{{ range $taxo, $taxo_map := site.Taxonomies }}
   {{ partial "taxonomy_terms_cloud.html" (dict "context" $context "taxo" $taxo "title" ( humanize $taxo ) ) }}
 {{ end }}
 ```

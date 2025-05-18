@@ -1,8 +1,8 @@
 <!-- Get the current buildcondition from the config and lowercase it -->
-{{- $condition := lower $.Site.Params.buildCondition -}}
+{{- $condition := lower site.Params.buildCondition -}}
 
 {{- if ne $condition "" -}}
-    
+
     <!-- Get the parameters from the shortcode invocation and lowercase them.
     TODO: to enable multiple conditions, we could accept comma-separated lists and split them -->
     {{- $include_if := lower (.Get "include-if") -}}

@@ -1,5 +1,5 @@
 {{ $page := .Page -}}
-{{ with .Site.Params.copyright -}}
+{{ with site.Params.copyright -}}
   {{ $fromYear := "" -}}
   {{ $toYear := "" -}}
   {{ $authors := "" -}}
@@ -18,7 +18,7 @@
     {{ $toYear | default now.Year }}
     <span class="td-footer__authors">
       {{- $authors
-            | default (printf "%s Authors" ($.Site.Title | default "Site"))
+            | default (printf "%s Authors" (site.Title | default "Site"))
             | $page.RenderString -}}
     </span>
     {{- /* Trim WS */ -}}
@@ -32,7 +32,7 @@
 
 {{- else -}}
 
-  {{ with .Site.Copyright -}}
+  {{ with site.Copyright -}}
     {{/* For historical reasons we process this as HTML rather than markdown. */ -}}
     <span class="td-footer__copyright">
       {{- . | safeHTML -}}

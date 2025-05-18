@@ -30,7 +30,7 @@
 {{ end -}}
 
 <section id="{{ $blockID }}" class="row td-cover-block td-cover-block--height-{{ $height -}}
-  {{ if not .Site.Params.ui.navbar_translucent_over_cover_disable }} js-td-cover
+  {{ if not site.Params.ui.navbar_translucent_over_cover_disable }} js-td-cover
   {{- end }} td-overlay td-overlay--dark -bg-{{ $col_id }}">
   <div class="col-12">
     <div class="container td-overlay__inner">

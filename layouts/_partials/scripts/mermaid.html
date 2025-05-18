@@ -1,4 +1,4 @@
-{{ $version := .Site.Params.mermaid.version | default "latest" -}}
+{{ $version := site.Params.mermaid.version | default "latest" -}}
 
 {{ $cdnurl := printf "https://cdn.jsdelivr.net/npm/mermaid@%s/dist/mermaid.esm.min.mjs" $version -}}
 {{ with try (resources.GetRemote $cdnurl) -}}
@@ -18,7 +18,7 @@
       return;
     }
 
-    var params = {{ with .Site.Params.mermaid }}{{ . | jsonify | safeJS }}{{ else }}{}{{- end }};
+    var params = {{ with site.Params.mermaid }}{{ . | jsonify | safeJS }}{{ else }}{}{{- end }};
 
     // Site params are stored with lowercase keys; lookup correct casing
     // from Mermaid default config.

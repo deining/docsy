@@ -14,7 +14,7 @@ how to configure and customize them to meet your needs.
 The top level menu (the one that appears in the top navigation bar for the
 entire site) uses your site's
 [`main` menu](https://gohugo.io/content-management/menus/). All Hugo sites have
-a `main` menu array of menu entries, accessible via the `.Site.Menus` site
+a `main` menu array of menu entries, accessible via the `site.Menus` site
 variable and populatable via page front matter or your site's
 `hugo.toml`/`hugo.yaml`/`hugo.json`.
 

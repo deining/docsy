@@ -5,7 +5,7 @@
 {{ $delimiter_right := "$$" -}}
 
 {{/* override delimiters if set in config file */ -}}
-{{ with $.Page.Site.Params.katex.options.delimiters -}}
+{{ with $.Pagesite.Params.katex.options.delimiters -}}
   {{ range first 1 ( where . "display" true ) -}}
     {{ $delimiter_left = index . "left" -}}
     {{ $delimiter_right = index . "right" -}}

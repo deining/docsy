@@ -1,4 +1,4 @@
-{{with .Site.Params.drawio}}
+{{with site.Params.drawio}}
 {{if .enable }}
 (function () {
   var shade;

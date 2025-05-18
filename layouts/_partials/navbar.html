@@ -1,16 +1,16 @@
 {{ $cover := and
     (.HasShortcode "blocks/cover")
-    (not .Site.Params.ui.navbar_translucent_over_cover_disable)
+    (not site.Params.ui.navbar_translucent_over_cover_disable)
 -}}
-{{ $baseURL := urls.Parse $.Site.Params.Baseurl -}}
+{{ $baseURL := urls.Parse site.Params.Baseurl -}}
 
 <nav class="td-navbar js-navbar-scroll
             {{- if $cover }} td-navbar-cover {{- end }}" data-bs-theme="dark">
 <div class="container-fluid flex-column flex-md-row">
-  <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
+  <a class="navbar-brand" href="{{ site.Home.RelPermalink }}">
     {{- /**/ -}}
     <span class="navbar-brand__logo navbar-logo">
-      {{- if ne .Site.Params.ui.navbar_logo false -}}
+      {{- if ne site.Params.ui.navbar_logo false -}}
         {{ with resources.Get "icons/logo.svg" -}}
           {{ ( . | minify).Content | safeHTML -}}
         {{ end -}}
@@ -18,14 +18,14 @@
     </span>
     {{- /**/ -}}
     <span class="navbar-brand__name">
-      {{- .Site.Title -}}
+      {{- site.Title -}}
     </span>
     {{- /**/ -}}
   </a>
   <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
     <ul class="navbar-nav">
       {{ $p := . -}}
-      {{ range .Site.Menus.main -}}
+      {{ range site.Menus.main -}}
       <li class="nav-item">
         {{ $active := or ($p.IsMenuCurrent "main" .) ($p.HasMenuCurrent "main" .) -}}
         {{ $href := "" -}}
@@ -47,17 +47,17 @@
         </a>
       </li>
       {{ end -}}
-      {{ if .Site.Params.versions -}}
+      {{ if site.Params.versions -}}
       <li class="nav-item dropdown d-none d-lg-block">
         {{ partial "navbar-version-selector.html" . -}}
       </li>
       {{ end -}}
-      {{ if (gt (len .Site.Home.Translations) 0) -}}
+      {{ if (gt (len site.Home.Translations) 0) -}}
       <li class="nav-item dropdown d-none d-lg-block">
         {{ partial "navbar-lang-selector.html" . -}}
       </li>
       {{ end -}}
-      {{ if .Site.Params.ui.showLightDarkModeMenu -}}
+      {{ if site.Params.ui.showLightDarkModeMenu -}}
       <li class="td-light-dark-menu nav-item dropdown">
         {{ partial "theme-toggler" . }}
       </li>

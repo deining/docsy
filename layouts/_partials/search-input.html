@@ -1,6 +1,6 @@
 {{ .Scratch.Set "docsy-search" 0 -}}
 
-{{ if .Site.Params.gcs_engine_id -}}
+{{ if site.Params.gcs_engine_id -}}
 {{ .Scratch.Add "docsy-search" 1 -}}
 
 <div class="td-search">
@@ -11,7 +11,7 @@
 {{- end -}}
 
 
-{{ if and .Site.Params.search (isset .Site.Params.search "algolia") -}}
+{{ if and site.Params.search (isset site.Params.search "algolia") -}}
 {{ .Scratch.Add "docsy-search" 1 -}}
 {{ .Scratch.Add "docsearch-id-num" 1 -}}
 
@@ -22,7 +22,7 @@
 {{- end -}}
 
 
-{{ if .Site.Params.offlineSearch -}}
+{{ if site.Params.offlineSearch -}}
 {{ .Scratch.Add "docsy-search" 1 -}}
 
 {{ $offlineSearchIndex := resources.Get "json/offline-search-index.json" | resources.ExecuteAsTemplate "offline-search-index.json" . -}}
@@ -49,7 +49,7 @@
     */}}
     data-offline-search-index-json-src="{{ $offlineSearchLink }}"
     data-offline-search-base-href="/"
-    data-offline-search-max-results="{{ .Site.Params.offlineSearchMaxResults | default 10 }}"
+    data-offline-search-max-results="{{ site.Params.offlineSearchMaxResults | default 10 }}"
   >
 </div>
 

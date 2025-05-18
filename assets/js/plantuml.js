@@ -1,4 +1,4 @@
-{{ with .Site.Params.plantuml }}
+{{ with site.Params.plantuml }}
 {{ if .enable }}
 {{ if .svg }}
 // https://unpkg.com/external-svg-loader@1.3.4/svg-loader.min.js

@@ -1,4 +1,4 @@
-{{ with .Site.Params.markmap }}
+{{ with site.Params.markmap }}
 {{ if .enable }}
 
 

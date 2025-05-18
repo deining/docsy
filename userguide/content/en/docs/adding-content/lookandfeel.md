@@ -508,7 +508,7 @@ which is used by all the other page templates:
 <!-- prettier-ignore -->
 ```html
 <!doctype html>
-<html lang="{{ .Site.Language.Lang }}" class="no-js">
+<html lang="{{ site.Language.Lang }}" class="no-js">
   <head>
     {{ partial "head.html" . }}
   </head>

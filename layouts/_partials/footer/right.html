@@ -1,4 +1,4 @@
-{{ with .Site.Params.links -}}
+{{ with site.Params.links -}}
   {{ with index . "developer" -}}
     {{- partial "footer/links.html"  . -}}
   {{ end -}}

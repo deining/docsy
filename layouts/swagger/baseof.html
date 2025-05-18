@@ -1,11 +1,11 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage"
-    {{- with .Site.Language.LanguageDirection }} dir="{{ . }}" {{- end -}}
-    {{ with .Site.Language.Lang }} lang="{{ . }}" {{- end }} {{/**/ -}}
+    {{- with site.Language.LanguageDirection }} dir="{{ . }}" {{- end -}}
+    {{ with site.Language.Lang }} lang="{{ . }}" {{- end }} {{/**/ -}}
     class="no-js">
   <head>
     {{ partial "head.html" . }}
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ site.Title }}{{ end }}</title>
     <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.1.0/swagger-ui.css" integrity="sha384-4cTBOIJxihgy9mISVlGqdBZkd66byHFwoLscqza6swXPIp5qiLBwuzuJD9cMjYOw" crossorigin="anonymous">
   </head>
   <body class="td-{{ .Kind }}">

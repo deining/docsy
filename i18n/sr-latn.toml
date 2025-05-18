@@ -63,19 +63,19 @@ other = "Odštampajte čitavu sekciju"
 
 # Community
 [community_join]
-other = "Pridružite se {{ .Site.Title }} zajednici"
+other = "Pridružite se {{ site.Title }} zajednici"
 [community_introduce]
-other = "{{ .Site.Title }} je open source projekat kojeg svako u zajednici može da koristi, unapređuje i da uživa u njemu. Voleli bismo da nam se pridružite! Ovde se možete uključiti kako biste saznali šta se dešava."
+other = "{{ site.Title }} je open source projekat kojeg svako u zajednici može da koristi, unapređuje i da uživa u njemu. Voleli bismo da nam se pridružite! Ovde se možete uključiti kako biste saznali šta se dešava."
 [community_learn]
 other = "Naučite i povežite se"
 [community_using]
-other = "Već koristite ili želite da počnete koristiti {{ .Site.Title }}? Saznajte više:"
+other = "Već koristite ili želite da počnete koristiti {{ site.Title }}? Saznajte više:"
 [community_develop]
 other = "Razvoj i doprinos"
 [community_contribute]
-other = "Ako želite da se više uključite u doprinos na {{ .Site.Title }}, pridružite nam se:"
+other = "Ako želite da se više uključite u doprinos na {{ site.Title }}, pridružite nam se:"
 [community_how_to]
-other = "Možete saznati kako da doprinesete na {{ .Site.Title }} u našim"
+other = "Možete saznati kako da doprinesete na {{ site.Title }} u našim"
 [community_guideline]
 other = "Smernicama za doprinos"
 

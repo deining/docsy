@@ -64,19 +64,19 @@ other = "列印整個章節"
 
 # Community
 [community_join]
-other = "加入 {{ .Site.Title }} 社群"
+other = "加入 {{ site.Title }} 社群"
 [community_introduce]
-other = "{{ .Site.Title }} 是一個開放原始碼專案，社群中的任何人都可以使用、改進並享受其成果。我們非常歡迎您加入我們！以下是了解最新動態以及參與我們的一些方式。"
+other = "{{ site.Title }} 是一個開放原始碼專案，社群中的任何人都可以使用、改進並享受其成果。我們非常歡迎您加入我們！以下是了解最新動態以及參與我們的一些方式。"
 [community_learn]
 other = "學習與交流"
 [community_using]
-other = "正在或打算使用 {{ .Site.Title }} 嗎？在此取得更多資訊："
+other = "正在或打算使用 {{ site.Title }} 嗎？在此取得更多資訊："
 [community_develop]
 other = "開發和貢獻"
 [community_contribute]
-other = "如果您想透過貢獻來更深入地參與 {{ .Site.Title }}，請在此處加入我們："
+other = "如果您想透過貢獻來更深入地參與 {{ site.Title }}，請在此處加入我們："
 [community_how_to]
-other = "您可以透過文件了解如何為 {{ .Site.Title }} 做出貢獻，請參考我們的"
+other = "您可以透過文件了解如何為 {{ site.Title }} 做出貢獻，請參考我們的"
 [community_guideline]
 other = "貢獻指南"
 

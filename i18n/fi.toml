@@ -64,18 +64,18 @@ other = "Tulosta koko osio"
 
 # Community
 [community_join]
-other = "Liity {{ .Site.Title }}-yhteisöön"
+other = "Liity {{ site.Title }}-yhteisöön"
 [community_introduce]
-other = "{{ .Site.Title }} on avoimen lähdekoodin projekti, josta jokainen saa nauttia käyttämällä ja kehittämällä sitä. Olisi mahtavaa jos tulisit mukaan! Tässä pari tapaa osallistua."
+other = "{{ site.Title }} on avoimen lähdekoodin projekti, josta jokainen saa nauttia käyttämällä ja kehittämällä sitä. Olisi mahtavaa jos tulisit mukaan! Tässä pari tapaa osallistua."
 [community_learn]
 other = "Opi ja kohtaa muita"
 [community_using]
-other = "Käytätkö tai haluatko käyttää {{ .Site.Title }}:a? Lisätietoa täällä:"
+other = "Käytätkö tai haluatko käyttää {{ site.Title }}:a? Lisätietoa täällä:"
 [community_develop]
 other = "Kehitä ja osallistu"
 [community_contribute]
-other = "Jos haluat auttaa kehittämään {{ .Site.Title }}:a, liity tänne:"
+other = "Jos haluat auttaa kehittämään {{ site.Title }}:a, liity tänne:"
 [community_how_to]
-other = "Voit oppia kehittämään {{ .Site.Title }}:a meidän"
+other = "Voit oppia kehittämään {{ site.Title }}:a meidän"
 [community_guideline]
 other = "osallistumisohjeissamme"

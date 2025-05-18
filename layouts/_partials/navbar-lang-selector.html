@@ -1,5 +1,5 @@
 {{/* Link directly to documentation etc., if possible. */ -}}
-{{ $langPage := cond (gt (len .Translations) 0) . .Site.Home -}}
+{{ $langPage := cond (gt (len .Translations) 0) . site.Home -}}
 <div class="dropdown">
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{- $langPage.Language.LanguageName -}}
