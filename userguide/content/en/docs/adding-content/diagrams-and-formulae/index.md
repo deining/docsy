@@ -144,7 +144,17 @@ markup:
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-With the `passthrough` extension enabled support of \(\KaTeX\) is automatically
+Docsy supports build-time generation of math equations using Hugo's
+`render-passthrough.html` [hook](https://gohugo.io/render-hooks/passthrough/).
+
+To enable this feature in your project, define
+`layouts/_markup/render-passthrough.html` as:
+
+```go-html-template
+{{ partial "scripts/math.html" . }}
+```
+
+With the `passthrough` extension enabled and the render hook in place, support of \(\KaTeX\) is automatically
 enabled as soon as you author a `math` code block on your page or make use of
 one of the passthrough delimiters defined above, .
 
